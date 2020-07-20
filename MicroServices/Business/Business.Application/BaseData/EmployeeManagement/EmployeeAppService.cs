@@ -75,7 +75,7 @@ namespace Business.BaseData.EmployeeManagement
             if (input.OrgId.HasValue)
             {
                 var org = await _orgRepository.GetAsync(input.OrgId.Value);
-                var orgIds = await _orgRepository.Where(_ => _.CascadeId.Contains(org.CascadeId)).Select(_=>_.Id).ToListAsync();
+                var orgIds = await _orgRepository.Where(_ => _.CascadeId.Contains(org.CascadeId)).Select(_ => _.Id).ToListAsync();
                 query = query.Where(_ => orgIds.Contains(_.OrgId));
             }
 

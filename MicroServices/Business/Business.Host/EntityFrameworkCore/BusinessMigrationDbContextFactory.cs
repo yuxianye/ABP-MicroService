@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Business.EntityFrameworkCore
 {
-    public class BusinessMigrationDbContextFactory: IDesignTimeDbContextFactory<BusinessMigrationDbContext>
+    public class BusinessMigrationDbContextFactory : IDesignTimeDbContextFactory<BusinessMigrationDbContext>
     {
         public BusinessMigrationDbContext CreateDbContext(string[] args)
         {

@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Business.Domain\Business.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Solution\" />
+  </ItemGroup>
+
 </Project>

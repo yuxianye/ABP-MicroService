@@ -47,5 +47,262 @@ namespace Business.Permissions
             public const string Update = Default + ".Update";
             public const string Create = Default + ".Create";
         }
+        public class Enterprises
+        {
+            public const string Default = Business + ".Enterprises";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EnterpriseAreas
+        {
+            public const string Default = Business + ".EnterpriseAreas";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EnterpriseProductionLines
+        {
+            public const string Default = Business + ".EnterpriseProductionLines";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EnterpriseSites
+        {
+            public const string Default = Business + ".EnterpriseSites";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EnterpriseWorkCenters
+        {
+            public const string Default = Business + ".EnterpriseWorkCenters";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EnterpriseWorkLocations
+        {
+            public const string Default = Business + ".EnterpriseWorkLocations";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+
+
+
+        public class Equipments
+        {
+            public const string Default = Business + ".Equipments";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EquipmentBrands
+        {
+            public const string Default = Business + ".EquipmentBrands";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EquipmentInspections
+        {
+            public const string Default = Business + ".EquipmentInspections";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EquipmentInspectionResults
+        {
+            public const string Default = Business + ".EquipmentInspectionResults";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EquipmentMaintenances
+        {
+            public const string Default = Business + ".EquipmentMaintenances";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EquipmentMaintenanceResults
+        {
+            public const string Default = Business + ".EquipmentMaintenanceResults";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EquipmentSpareParts
+        {
+            public const string Default = Business + ".EquipmentSpareParts";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EquipmentSparePartTypes
+        {
+            public const string Default = Business + ".EquipmentSparePartTypes";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EquipmentStatus
+        {
+            public const string Default = Business + ".EquipmentStatus";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class EquipmentTypes
+        {
+            public const string Default = Business + ".EquipmentTypes";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+
+
+
+        public class BOMs
+        {
+            public const string Default = Business + ".BOMs";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class Materials
+        {
+            public const string Default = Business + ".Materials";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class Products
+        {
+            public const string Default = Business + ".Products";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class ProductTypes
+        {
+            public const string Default = Business + ".ProductTypes";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+
+        public class Units
+        {
+            public const string Default = Business + ".Units";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+
+
+        public class QualityInspects
+        {
+            public const string Default = Business + ".QualityInspects";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class QualityInspectResults
+        {
+            public const string Default = Business + ".QualityInspectResults";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class QualityInspectTypes
+        {
+            public const string Default = Business + ".QualityInspectTypes";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class QualityProblemLibs
+        {
+            public const string Default = Business + ".QualityProblemLibs";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+
+        public class Suppliers
+        {
+            public const string Default = Business + ".Suppliers";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class SupplierLevels
+        {
+            public const string Default = Business + ".SupplierLevels";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+
+        public class Warehouses
+        {
+            public const string Default = Business + ".Warehouses";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class WarehouseAreas
+        {
+            public const string Default = Business + ".WarehouseAreas";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class WarehouseLocations
+        {
+            public const string Default = Business + ".WarehouseLocations";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+        public class WarehouseTypes
+        {
+            public const string Default = Business + ".WarehouseTypes";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+
+
+
+        public class Customers
+        {
+            public const string Default = Business + ".Customers";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+
+
+        public class Orders
+        {
+            public const string Default = Business + ".Orders";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+
+        public class OrderStatus
+        {
+            public const string Default = Business + ".OrderStatus";
+            public const string Update = Default + ".Update";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
+        }
+
+
     }
 }
