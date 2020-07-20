@@ -76,7 +76,7 @@ export default {
     size: '布局大小'
   },
   login: {
-    title: '系统登录',
+    title: '智能制造执行系统',
     logIn: '登录',
     username: '账号',
     password: '密码',

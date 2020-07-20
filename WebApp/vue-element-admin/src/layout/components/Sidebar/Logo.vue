@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      title: '制造执行系统',
+      title: '智能制造执行系统',
       logo: '/favicon.ico'
     }
   }
