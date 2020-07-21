@@ -27,6 +27,8 @@ namespace Business
 
         private readonly IRepository<Organization> _organizationRepository;
 
+        private readonly IRepository<Job> _jobRepository;
+
         //private readonly ISelectionService _selectionService;
 
         public BusinessDataSeedContributor(
@@ -35,7 +37,8 @@ namespace Business
 
             IRepository<BaseData.DataDictionary, Guid> dataDictionaryRepository,
             IRepository<BaseData.DataDictionaryDetail, Guid> dataDictionaryDetailRepository,
-            IRepository<Organization> organizationRepository
+            IRepository<Organization> organizationRepository,
+            IRepository<Job> jobRepository
             )
         {
             _guidGenerator = guidGenerator;
@@ -46,6 +49,7 @@ namespace Business
 
 
             _organizationRepository = organizationRepository;
+            _jobRepository = jobRepository;
 
         }
 
@@ -460,54 +464,54 @@ namespace Business
                 }
                 if (!await _organizationRepository.AnyAsync(a => a.Name == "上海子公司"))
                 {
-                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 2, organization.Id, "上海子公司", "安世亚太/上海子公司", 2, false, true) { CascadeId = ".0.1.1." });
+                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 1, organization.Id, "上海子公司", "安世亚太/上海子公司", 2, false, true) { CascadeId = ".0.1.2." });
                 }
                 if (!await _organizationRepository.AnyAsync(a => a.Name == "上海SOE公司"))
                 {
-                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 2, organization.Id, "上海SOE公司", "安世亚太/上海SOE公司", 3, false, true) { CascadeId = ".0.1.1." });
+                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 1, organization.Id, "上海SOE公司", "安世亚太/上海SOE公司", 3, false, true) { CascadeId = ".0.1.3." });
                 }
                 if (!await _organizationRepository.AnyAsync(a => a.Name == "广州子公司"))
                 {
-                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 2, organization.Id, "广州子公司", "安世亚太/广州子公司", 5, false, true) { CascadeId = ".0.1.1." });
+                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 1, organization.Id, "广州子公司", "安世亚太/广州子公司", 5, false, true) { CascadeId = ".0.1.4." });
                 }
                 if (!await _organizationRepository.AnyAsync(a => a.Name == "南京子公司"))
                 {
-                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 2, organization.Id, "南京子公司", "安世亚太/南京子公司", 6, false, true) { CascadeId = ".0.1.1." });
+                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 1, organization.Id, "南京子公司", "安世亚太/南京子公司", 6, false, true) { CascadeId = ".0.1.5." });
                 }
                 if (!await _organizationRepository.AnyAsync(a => a.Name == "武汉分公司"))
                 {
-                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 2, organization.Id, "武汉分公司", "安世亚太/武汉分公司", 7, false, true) { CascadeId = ".0.1.1." });
+                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 1, organization.Id, "武汉分公司", "安世亚太/武汉分公司", 7, false, true) { CascadeId = ".0.1.6." });
                 }
                 if (!await _organizationRepository.AnyAsync(a => a.Name == "成都子公司"))
                 {
-                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 2, organization.Id, "成都子公司", "安世亚太/成都子公司", 8, false, true) { CascadeId = ".0.1.1." });
+                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 1, organization.Id, "成都子公司", "安世亚太/成都子公司", 8, false, true) { CascadeId = ".0.1.7." });
                 }
                 if (!await _organizationRepository.AnyAsync(a => a.Name == "重庆分公司"))
                 {
-                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 2, organization.Id, "重庆分公司", "安世亚太/重庆分公司", 9, false, true) { CascadeId = ".0.1.1." });
+                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 1, organization.Id, "重庆分公司", "安世亚太/重庆分公司", 9, false, true) { CascadeId = ".0.1.8." });
                 }
                 if (!await _organizationRepository.AnyAsync(a => a.Name == "西安分公司"))
                 {
-                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 2, organization.Id, "西安分公司", "安世亚太/西安分公司", 10, false, true) { CascadeId = ".0.1.1." });
+                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 1, organization.Id, "西安分公司", "安世亚太/西安分公司", 10, false, true) { CascadeId = ".0.1.9." });
                 }
                 if (!await _organizationRepository.AnyAsync(a => a.Name == "沈阳子公司"))
                 {
-                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 2, organization.Id, "沈阳子公司", "安世亚太/沈阳子公司", 11, false, true) { CascadeId = ".0.1.1." });
+                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 1, organization.Id, "沈阳子公司", "安世亚太/沈阳子公司", 11, false, true) { CascadeId = ".0.1.10." });
                 }
                 if (!await _organizationRepository.AnyAsync(a => a.Name == "香港子公司"))
                 {
-                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 2, organization.Id, "香港子公司", "安世亚太/香港子公司", 12, false, true) { CascadeId = ".0.1.1." });
+                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 1, organization.Id, "香港子公司", "安世亚太/香港子公司", 12, false, true) { CascadeId = ".0.1.10." });
                 }
 
 
                 if (!await _organizationRepository.AnyAsync(a => a.Name == "机车行业部"))
                 {
-                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 3, organizationBeijing?.Id, "机车行业部", "安世亚太/北京子公司/机车行业部", 1, false, true) { CascadeId = ".0.1.1.1." });
+                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 3, organizationBeijing?.Id, "机车行业部", "安世亚太/北京子公司/机车行业部", 1, true, true) { CascadeId = ".0.1.1.1." });
                 }
 
                 if (!await _organizationRepository.AnyAsync(a => a.Name == "市场部"))
                 {
-                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 3, organizationBeijing?.Id, "市场部", "安世亚太/北京子公司/市场部", 2, false, true) { CascadeId = ".0.1.1.1." });
+                    await _organizationRepository.InsertAsync(new Organization(_guidGenerator.Create(), 3, organizationBeijing?.Id, "市场部", "安世亚太/北京子公司/市场部", 2, true, true) { CascadeId = ".0.1.1.2." });
                 }
 
 
@@ -518,10 +522,47 @@ namespace Business
 
         #region 岗位管理
 
+        /// <summary>
+        /// 制造业的价值链比较长，因此，从职能类别看，可分为
+        /// 专业技术类（研发技术，工艺技术，制造技术）
+        /// 生产操作类（车间操作人员，辅助操作人员，物料供应、仓储、发运）
+        /// 营销类（市场营销、品牌策划、促销推广、广告公关）
+        /// 管理类（班组长、工段长、车间主任、部门经理、总监、副总裁等）
+        /// 如果需要，可再加上专业职能类
+        /// （人力资源管理一般人员人员，财务管理一般人员人员，行政管理一般人员、生产管理的一般人员，销售管理的一般人员，研发管理的一般人员，信息管理的一般人员，也就是我们通常说的产、销、人、发、财）
+        /// </summary>
+        /// <returns></returns>
         private async Task CreateJobSeedData()
         {
+            if (!await _jobRepository.AnyAsync(a => a.Name == "总经理"))
+            {
+                await _jobRepository.InsertAsync(new Job(_guidGenerator.Create(), "总经理", true, 1, ""));
+            }
 
-
+            if (!await _jobRepository.AnyAsync(a => a.Name == "总监/副总"))
+            {
+                await _jobRepository.InsertAsync(new Job(_guidGenerator.Create(), "总监/副总", true, 2, ""));
+            }
+            if (!await _jobRepository.AnyAsync(a => a.Name == "部长/经理"))
+            {
+                await _jobRepository.InsertAsync(new Job(_guidGenerator.Create(), "部长/经理", true, 3, ""));
+            }
+            if (!await _jobRepository.AnyAsync(a => a.Name == "主任/科长"))
+            {
+                await _jobRepository.InsertAsync(new Job(_guidGenerator.Create(), "主任/科长", true, 4, ""));
+            }
+            if (!await _jobRepository.AnyAsync(a => a.Name == "主管"))
+            {
+                await _jobRepository.InsertAsync(new Job(_guidGenerator.Create(), "主管", true, 5, ""));
+            }
+            if (!await _jobRepository.AnyAsync(a => a.Name == "工段长/线长"))
+            {
+                await _jobRepository.InsertAsync(new Job(_guidGenerator.Create(), "工段长/线长", true, 6, ""));
+            }
+            if (!await _jobRepository.AnyAsync(a => a.Name == "班组长"))
+            {
+                await _jobRepository.InsertAsync(new Job(_guidGenerator.Create(), "班组长", true, 7, ""));
+            }
         }
 
         #endregion
