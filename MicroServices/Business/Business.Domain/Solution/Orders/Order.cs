@@ -1,3 +1,4 @@
+using Business.BaseData;
 using Business.Customers;
 using Business.Materials;
 using System;
@@ -19,12 +20,12 @@ namespace Business.Orders
         /// <summary>
         /// 订单编号
         /// </summary>
-        public int Code { get;  set; }
+        public int Code { get; set; }
 
         /// <summary>
         /// 客户编号
         /// </summary>
-        public Guid CustomerId { get;  set; }
+        public Guid CustomerId { get; set; }
 
         /// <summary>
         /// 单位
@@ -35,7 +36,7 @@ namespace Business.Orders
         /// <summary>
         /// 产品编号
         /// </summary>
-        public Guid ProductId { get;  set; }
+        public Guid ProductId { get; set; }
 
         /// <summary>
         /// 产品
@@ -46,28 +47,28 @@ namespace Business.Orders
         /// <summary>
         /// 数量
         /// </summary>
-        public int Count { get;  set; }
+        public int Count { get; set; }
 
         /// <summary>
         /// 订单状态
         /// </summary>
-        public Guid OrderStatusId { get;  set; }
+        public Guid OrderStatusId { get; set; }
 
-        /// <summary>
-        /// 订单状态
-        /// </summary>
-        [ForeignKey(nameof(OrderStatusId))]
-        public virtual OrderStatus OrderStatus { get; set; }
+        ///// <summary>
+        ///// 订单状态
+        ///// </summary>
+        //[ForeignKey(nameof(OrderStatusId))]
+        //public virtual DataDictionaryDetail OrderStatus { get; set; }
 
         /// <summary>
         /// 订货货日期
         /// </summary>
-        public DateTime OrderDate  { get;  set; }
+        public DateTime OrderDate { get; set; }
 
         /// <summary>
         /// 交货日期
         /// </summary>
-        public DateTime DeliveryDate { get;  set; }
+        public DateTime DeliveryDate { get; set; }
 
         /// <summary>
         /// 备注

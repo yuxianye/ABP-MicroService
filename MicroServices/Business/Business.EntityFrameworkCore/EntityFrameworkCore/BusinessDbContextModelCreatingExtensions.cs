@@ -7,7 +7,6 @@ using Business.Customers;
 using Business.Warehouses;
 using Business.Suppliers;
 using Business.Qualities;
-using Business.Public;
 using Business.Materials;
 using Business.Equipments;
 using Business.Enterprises;
@@ -173,49 +172,9 @@ namespace Business.EntityFrameworkCore
                 /* Configure more properties here */
             });
 
-            builder.Entity<EquipmentType>(b =>
-            {
-                b.ToTable(BusinessConsts.DbTablePrefix + "EquipmentTypes", BusinessConsts.DbSchema);
-                b.ConfigureByConvention();
-                b.HasIndex(x => x.Name).IsUnique(true);
-                b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
-                b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
-                /* Configure more properties here */
-            });
-
-            builder.Entity<EquipmentStatus>(b =>
-            {
-                b.ToTable(BusinessConsts.DbTablePrefix + "EquipmentStatuses", BusinessConsts.DbSchema);
-                b.ConfigureByConvention();
-                b.HasIndex(x => x.Name).IsUnique(true);
-                b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
-                b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
-                /* Configure more properties here */
-            });
-
-            builder.Entity<EquipmentSparePartType>(b =>
-            {
-                b.ToTable(BusinessConsts.DbTablePrefix + "EquipmentSparePartTypes", BusinessConsts.DbSchema);
-                b.ConfigureByConvention();
-                b.HasIndex(x => x.Name).IsUnique(true);
-                b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
-                b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
-                /* Configure more properties here */
-            });
-
             builder.Entity<EquipmentSparePart>(b =>
             {
                 b.ToTable(BusinessConsts.DbTablePrefix + "EquipmentSpareParts", BusinessConsts.DbSchema);
-                b.ConfigureByConvention();
-                b.HasIndex(x => x.Name).IsUnique(true);
-                b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
-                b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
-                /* Configure more properties here */
-            });
-
-            builder.Entity<EquipmentMaintenanceResult>(b =>
-            {
-                b.ToTable(BusinessConsts.DbTablePrefix + "EquipmentMaintenanceResults", BusinessConsts.DbSchema);
                 b.ConfigureByConvention();
                 b.HasIndex(x => x.Name).IsUnique(true);
                 b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
@@ -236,16 +195,6 @@ namespace Business.EntityFrameworkCore
                 /* Configure more properties here */
             });
 
-            builder.Entity<EquipmentInspectionResult>(b =>
-            {
-                b.ToTable(BusinessConsts.DbTablePrefix + "EquipmentInspectionResults", BusinessConsts.DbSchema);
-                b.ConfigureByConvention();
-                b.HasIndex(x => x.Name).IsUnique(true);
-                b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
-                b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
-                /* Configure more properties here */
-            });
-
             builder.Entity<EquipmentInspection>(b =>
             {
                 b.ToTable(BusinessConsts.DbTablePrefix + "EquipmentInspections", BusinessConsts.DbSchema);
@@ -254,16 +203,6 @@ namespace Business.EntityFrameworkCore
                 b.Property(x => x.Problem).HasMaxLength(BusinessConsts.StringLength256);
                 b.Property(x => x.Cause).HasMaxLength(BusinessConsts.StringLength256);
                 b.Property(x => x.Solution).HasMaxLength(BusinessConsts.StringLength256);
-                b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
-                /* Configure more properties here */
-            });
-
-            builder.Entity<EquipmentBrand>(b =>
-            {
-                b.ToTable(BusinessConsts.DbTablePrefix + "EquipmentBrands", BusinessConsts.DbSchema);
-                b.ConfigureByConvention();
-                b.HasIndex(x => x.Name).IsUnique(true);
-                b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
                 /* Configure more properties here */
             });
@@ -308,16 +247,6 @@ namespace Business.EntityFrameworkCore
                 /* Configure more properties here */
             });
 
-            builder.Entity<ProductType>(b =>
-            {
-                b.ToTable(BusinessConsts.DbTablePrefix + "ProductTypes", BusinessConsts.DbSchema);
-                b.ConfigureByConvention();
-                b.HasIndex(x => x.Name).IsUnique(true);
-                b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
-                b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
-                /* Configure more properties here */
-            });
-
             builder.Entity<BOM>(b =>
             {
                 b.ToTable(BusinessConsts.DbTablePrefix + "BOMs", BusinessConsts.DbSchema);
@@ -329,32 +258,12 @@ namespace Business.EntityFrameworkCore
                 /* Configure more properties here */
             });
 
-            builder.Entity<Unit>(b =>
-            {
-                b.ToTable(BusinessConsts.DbTablePrefix + "Units", BusinessConsts.DbSchema);
-                b.HasIndex(x => x.Name).IsUnique(true);
-                b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
-                b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
-                b.ConfigureByConvention();
-                /* Configure more properties here */
-            });
-
             builder.Entity<QualityInspect>(b =>
             {
                 b.ToTable(BusinessConsts.DbTablePrefix + "QualityInspects", BusinessConsts.DbSchema);
                 b.HasIndex(x => x.Code).IsUnique(true);
                 b.Property(x => x.Code).IsRequired().HasMaxLength(BusinessConsts.CodeLength);
                 b.Property(x => x.InspectPerson).IsRequired().HasMaxLength(BusinessConsts.NameLength);
-                b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
-                b.ConfigureByConvention();
-                /* Configure more properties here */
-            });
-
-            builder.Entity<QualityInspectResult>(b =>
-            {
-                b.ToTable(BusinessConsts.DbTablePrefix + "QualityInspectResults", BusinessConsts.DbSchema);
-                b.HasIndex(x => x.Name).IsUnique(true);
-                b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
                 b.ConfigureByConvention();
                 /* Configure more properties here */
@@ -377,16 +286,6 @@ namespace Business.EntityFrameworkCore
                 b.ToTable(BusinessConsts.DbTablePrefix + "QualityProblemLibs", BusinessConsts.DbSchema);
                 b.HasIndex(x => x.Code).IsUnique(true);
                 b.Property(x => x.Code).IsRequired().HasMaxLength(BusinessConsts.CodeLength);
-                b.HasIndex(x => x.Name).IsUnique(true);
-                b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
-                b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
-                b.ConfigureByConvention();
-                /* Configure more properties here */
-            });
-
-            builder.Entity<SupplierLevel>(b =>
-            {
-                b.ToTable(BusinessConsts.DbTablePrefix + "SupplierLevels", BusinessConsts.DbSchema);
                 b.HasIndex(x => x.Name).IsUnique(true);
                 b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
@@ -466,16 +365,6 @@ namespace Business.EntityFrameworkCore
                 b.Property(x => x.Address).HasMaxLength(BusinessConsts.AddressLength);
                 b.Property(x => x.Contact).HasMaxLength(BusinessConsts.NameLength);
                 b.Property(x => x.Phone).HasMaxLength(BusinessConsts.PhoneLength);
-                b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
-                b.ConfigureByConvention();
-                /* Configure more properties here */
-            });
-
-            builder.Entity<OrderStatus>(b =>
-            {
-                b.ToTable(BusinessConsts.DbTablePrefix + "OrderStatuses", BusinessConsts.DbSchema);
-                b.HasIndex(x => x.Name).IsUnique(true);
-                b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
                 b.ConfigureByConvention();
                 /* Configure more properties here */

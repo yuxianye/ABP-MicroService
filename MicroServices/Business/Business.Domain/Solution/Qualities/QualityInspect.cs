@@ -1,3 +1,4 @@
+using Business.BaseData;
 using Business.ProcessRoutes;
 using System;
 using System.Collections.Generic;
@@ -66,11 +67,11 @@ namespace Business.Qualities
         /// </summary>
         public Guid QualityInspectResultId { get; set; }
 
-        /// <summary>
-        /// 质量检查结果
-        /// </summary>
-        [ForeignKey(nameof(QualityInspectResultId))]
-        public virtual QualityInspectResult QualityInspectResult { get; set; }
+        ///// <summary>
+        ///// 质量检查结果
+        ///// </summary>
+        //[ForeignKey(nameof(QualityInspectResultId))]
+        //public virtual DataDictionaryDetail QualityInspectResult { get; set; }
 
         /// <summary>
         /// 备注

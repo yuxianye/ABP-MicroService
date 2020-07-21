@@ -1,3 +1,4 @@
+using Business.BaseData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,6 +17,17 @@ namespace Business.Customers
         /// 名称
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// 客户等级编号
+        /// </summary>
+        public Guid CustomerLevelId { get; set; }
+
+        ///// <summary>
+        ///// 客户等级编号
+        ///// </summary>
+        //[ForeignKey(nameof(CustomerLevelId))]
+        //public virtual DataDictionaryDetail CustomerLeve { get; set; }
 
         /// <summary>
         /// 地址

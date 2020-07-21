@@ -1,3 +1,4 @@
+using Business.BaseData;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,7 +16,7 @@ namespace Business.Equipments
         /// 设备Id
         /// </summary>
         public Guid EquipmentId { get; set; }
-     
+
         /// <summary>
         /// 设备
         /// </summary>
@@ -67,11 +68,11 @@ namespace Business.Equipments
         /// </summary>
         public Guid EquipmentMaintenanceResultId { get; set; }
 
-        /// <summary>
-        /// 维修结果
-        /// </summary>
-        [ForeignKey(nameof(EquipmentMaintenanceResultId))]
-        public virtual EquipmentMaintenanceResult EquipmentMaintenanceResult { get; set; }
+        ///// <summary>
+        ///// 维修结果
+        ///// </summary>
+        //[ForeignKey(nameof(EquipmentMaintenanceResultId))]
+        //public virtual DataDictionaryDetail EquipmentMaintenanceResult { get; set; }
 
         /// <summary>
         /// 备注
@@ -96,7 +97,7 @@ namespace Business.Equipments
             DateTime maintenanceTime,
             Guid equipmentMaintenanceResultId,
             string remark
-        ) :base(id)
+        ) : base(id)
         {
             EquipmentId = equipmentId;
             Problem = problem;

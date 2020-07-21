@@ -1,3 +1,4 @@
+using Business.BaseData;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -38,6 +39,12 @@ namespace Business.Equipments
         public Guid EquipmentInspectionResultId { get; set; }
 
         /// <summary>
+        /// 巡检结果
+        /// </summary>
+        [ForeignKey(nameof(EquipmentInspectionResultId))]
+        public virtual DataDictionaryDetail EquipmentInspectionResul { get; set; }
+
+        /// <summary>
         /// 设备存在问题
         /// </summary>
         public string Problem { get; set; }
@@ -71,7 +78,7 @@ namespace Business.Equipments
             string cause,
             string solution,
             string remark
-        ) :base(id)
+        ) : base(id)
         {
             EquipmentId = equipmentId;
             InspectionTime = inspectionTime;

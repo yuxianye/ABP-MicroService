@@ -80,50 +80,20 @@ namespace Business.Permissions
             equipmentPermission.AddChild(BusinessPermissions.Equipments.Update, L("Permission:Update"));
             equipmentPermission.AddChild(BusinessPermissions.Equipments.Delete, L("Permission:Delete"));
 
-            var equipmentBrandPermission = business.AddPermission(BusinessPermissions.EquipmentBrands.Default, L("Permission:EquipmentBrands"));
-            equipmentBrandPermission.AddChild(BusinessPermissions.EquipmentBrands.Create, L("Permission:Create"));
-            equipmentBrandPermission.AddChild(BusinessPermissions.EquipmentBrands.Update, L("Permission:Update"));
-            equipmentBrandPermission.AddChild(BusinessPermissions.EquipmentBrands.Delete, L("Permission:Delete"));
-
             var equipmentInspectionPermission = business.AddPermission(BusinessPermissions.EquipmentInspections.Default, L("Permission:EquipmentInspections"));
             equipmentInspectionPermission.AddChild(BusinessPermissions.EquipmentInspections.Create, L("Permission:Create"));
             equipmentInspectionPermission.AddChild(BusinessPermissions.EquipmentInspections.Update, L("Permission:Update"));
             equipmentInspectionPermission.AddChild(BusinessPermissions.EquipmentInspections.Delete, L("Permission:Delete"));
-
-            var equipmentInspectionResultPermission = business.AddPermission(BusinessPermissions.EquipmentInspectionResults.Default, L("Permission:EquipmentInspectionResults"));
-            equipmentInspectionResultPermission.AddChild(BusinessPermissions.EquipmentInspectionResults.Create, L("Permission:Create"));
-            equipmentInspectionResultPermission.AddChild(BusinessPermissions.EquipmentInspectionResults.Update, L("Permission:Update"));
-            equipmentInspectionResultPermission.AddChild(BusinessPermissions.EquipmentInspectionResults.Delete, L("Permission:Delete"));
 
             var equipmentMaintenancePermission = business.AddPermission(BusinessPermissions.EquipmentMaintenances.Default, L("Permission:EquipmentMaintenances"));
             equipmentMaintenancePermission.AddChild(BusinessPermissions.EquipmentMaintenances.Create, L("Permission:Create"));
             equipmentMaintenancePermission.AddChild(BusinessPermissions.EquipmentMaintenances.Update, L("Permission:Update"));
             equipmentMaintenancePermission.AddChild(BusinessPermissions.EquipmentMaintenances.Delete, L("Permission:Delete"));
 
-            var equipmentMaintenanceResultPermission = business.AddPermission(BusinessPermissions.EquipmentMaintenanceResults.Default, L("Permission:EquipmentMaintenanceResults"));
-            equipmentMaintenanceResultPermission.AddChild(BusinessPermissions.EquipmentMaintenanceResults.Create, L("Permission:Create"));
-            equipmentMaintenanceResultPermission.AddChild(BusinessPermissions.EquipmentMaintenanceResults.Update, L("Permission:Update"));
-            equipmentMaintenanceResultPermission.AddChild(BusinessPermissions.EquipmentMaintenanceResults.Delete, L("Permission:Delete"));
-
             var equipmentSparePartPermission = business.AddPermission(BusinessPermissions.EquipmentSpareParts.Default, L("Permission:EquipmentSpareParts"));
             equipmentSparePartPermission.AddChild(BusinessPermissions.EquipmentSpareParts.Create, L("Permission:Create"));
             equipmentSparePartPermission.AddChild(BusinessPermissions.EquipmentSpareParts.Update, L("Permission:Update"));
             equipmentSparePartPermission.AddChild(BusinessPermissions.EquipmentSpareParts.Delete, L("Permission:Delete"));
-
-            var equipmentSparePartTypePermission = business.AddPermission(BusinessPermissions.EquipmentSparePartTypes.Default, L("Permission:EquipmentSparePartTypes"));
-            equipmentSparePartTypePermission.AddChild(BusinessPermissions.EquipmentSparePartTypes.Create, L("Permission:Create"));
-            equipmentSparePartTypePermission.AddChild(BusinessPermissions.EquipmentSparePartTypes.Update, L("Permission:Update"));
-            equipmentSparePartTypePermission.AddChild(BusinessPermissions.EquipmentSparePartTypes.Delete, L("Permission:Delete"));
-
-            var equipmentStatusPermission = business.AddPermission(BusinessPermissions.EquipmentStatus.Default, L("Permission:EquipmentStatus"));
-            equipmentStatusPermission.AddChild(BusinessPermissions.EquipmentStatus.Create, L("Permission:Create"));
-            equipmentStatusPermission.AddChild(BusinessPermissions.EquipmentStatus.Update, L("Permission:Update"));
-            equipmentStatusPermission.AddChild(BusinessPermissions.EquipmentStatus.Delete, L("Permission:Delete"));
-
-            var equipmentTypePermission = business.AddPermission(BusinessPermissions.EquipmentTypes.Default, L("Permission:EquipmentTypes"));
-            equipmentTypePermission.AddChild(BusinessPermissions.EquipmentTypes.Create, L("Permission:Create"));
-            equipmentTypePermission.AddChild(BusinessPermissions.EquipmentTypes.Update, L("Permission:Update"));
-            equipmentTypePermission.AddChild(BusinessPermissions.EquipmentTypes.Delete, L("Permission:Delete"));
 
             var materialPermission = business.AddPermission(BusinessPermissions.Materials.Default, L("Permission:Materials"));
             materialPermission.AddChild(BusinessPermissions.Materials.Create, L("Permission:Create"));
@@ -135,30 +105,15 @@ namespace Business.Permissions
             productPermission.AddChild(BusinessPermissions.Products.Update, L("Permission:Update"));
             productPermission.AddChild(BusinessPermissions.Products.Delete, L("Permission:Delete"));
 
-            var productTypePermission = business.AddPermission(BusinessPermissions.ProductTypes.Default, L("Permission:ProductTypes"));
-            productTypePermission.AddChild(BusinessPermissions.ProductTypes.Create, L("Permission:Create"));
-            productTypePermission.AddChild(BusinessPermissions.ProductTypes.Update, L("Permission:Update"));
-            productTypePermission.AddChild(BusinessPermissions.ProductTypes.Delete, L("Permission:Delete"));
-
             var bOMPermission = business.AddPermission(BusinessPermissions.BOMs.Default, L("Permission:Materials"));
             bOMPermission.AddChild(BusinessPermissions.BOMs.Create, L("Permission:Create"));
             bOMPermission.AddChild(BusinessPermissions.BOMs.Update, L("Permission:Update"));
             bOMPermission.AddChild(BusinessPermissions.BOMs.Delete, L("Permission:Delete"));
 
-            var unitPermission = business.AddPermission(BusinessPermissions.Units.Default, L("Permission:Public"));
-            unitPermission.AddChild(BusinessPermissions.Units.Create, L("Permission:Create"));
-            unitPermission.AddChild(BusinessPermissions.Units.Update, L("Permission:Update"));
-            unitPermission.AddChild(BusinessPermissions.Units.Delete, L("Permission:Delete"));
-
             var qualityInspectPermission = business.AddPermission(BusinessPermissions.QualityInspects.Default, L("Permission:QualityInspects"));
             qualityInspectPermission.AddChild(BusinessPermissions.QualityInspects.Create, L("Permission:Create"));
             qualityInspectPermission.AddChild(BusinessPermissions.QualityInspects.Update, L("Permission:Update"));
             qualityInspectPermission.AddChild(BusinessPermissions.QualityInspects.Delete, L("Permission:Delete"));
-
-            var qualityInspectResultPermission = business.AddPermission(BusinessPermissions.QualityInspectResults.Default, L("Permission:QualityInspectResults"));
-            qualityInspectResultPermission.AddChild(BusinessPermissions.QualityInspectResults.Create, L("Permission:Create"));
-            qualityInspectResultPermission.AddChild(BusinessPermissions.QualityInspectResults.Update, L("Permission:Update"));
-            qualityInspectResultPermission.AddChild(BusinessPermissions.QualityInspectResults.Delete, L("Permission:Delete"));
 
             var qualityInspectTypePermission = business.AddPermission(BusinessPermissions.QualityInspectTypes.Default, L("Permission:QualityInspectTypes"));
             qualityInspectTypePermission.AddChild(BusinessPermissions.QualityInspectTypes.Create, L("Permission:Create"));
@@ -174,11 +129,6 @@ namespace Business.Permissions
             suppliersPermission.AddChild(BusinessPermissions.Suppliers.Create, L("Permission:Create"));
             suppliersPermission.AddChild(BusinessPermissions.Suppliers.Update, L("Permission:Update"));
             suppliersPermission.AddChild(BusinessPermissions.Suppliers.Delete, L("Permission:Delete"));
-
-            var supplierLevelPermission = business.AddPermission(BusinessPermissions.SupplierLevels.Default, L("Permission:SupplierLevels"));
-            supplierLevelPermission.AddChild(BusinessPermissions.SupplierLevels.Create, L("Permission:Create"));
-            supplierLevelPermission.AddChild(BusinessPermissions.SupplierLevels.Update, L("Permission:Update"));
-            supplierLevelPermission.AddChild(BusinessPermissions.SupplierLevels.Delete, L("Permission:Delete"));
 
             var warehousePermission = business.AddPermission(BusinessPermissions.Warehouses.Default, L("Permission:Warehouses"));
             warehousePermission.AddChild(BusinessPermissions.Warehouses.Create, L("Permission:Create"));
@@ -210,18 +160,6 @@ namespace Business.Permissions
             orderStatusPermission.AddChild(BusinessPermissions.Orders.Create, L("Permission:Create"));
             orderStatusPermission.AddChild(BusinessPermissions.Orders.Update, L("Permission:Update"));
             orderStatusPermission.AddChild(BusinessPermissions.Orders.Delete, L("Permission:Delete"));
-
-            var orderPermission = business.AddPermission(BusinessPermissions.OrderStatus.Default, L("Permission:OrderStatus"));
-            orderPermission.AddChild(BusinessPermissions.OrderStatus.Create, L("Permission:Create"));
-            orderPermission.AddChild(BusinessPermissions.OrderStatus.Update, L("Permission:Update"));
-            orderPermission.AddChild(BusinessPermissions.OrderStatus.Delete, L("Permission:Delete"));
-
-
-
-
-
-
-
 
         }
 

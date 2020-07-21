@@ -1,5 +1,5 @@
+using Business.BaseData;
 using Business.Materials;
-using Business.Public;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -42,11 +42,11 @@ namespace Business.ProcessRoutes
         /// </summary>
         public Guid UnitId { get; set; }
 
-        /// <summary>
-        /// 计量单位
-        /// </summary>
-        [ForeignKey(nameof(UnitId))]
-        public virtual Unit Unit { get; set; }
+        ///// <summary>
+        ///// 计量单位
+        ///// </summary>
+        //[ForeignKey(nameof(UnitId))]
+        //public virtual DataDictionaryDetail Unit { get; set; }
 
         /// <summary>
         /// 标准用量

@@ -99,13 +99,7 @@ namespace Business.Permissions
             public const string Create = Default + ".Create";
             public const string Delete = Default + ".Delete";
         }
-        public class EquipmentBrands
-        {
-            public const string Default = Business + ".EquipmentBrands";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
-        }
+
         public class EquipmentInspections
         {
             public const string Default = Business + ".EquipmentInspections";
@@ -113,13 +107,7 @@ namespace Business.Permissions
             public const string Create = Default + ".Create";
             public const string Delete = Default + ".Delete";
         }
-        public class EquipmentInspectionResults
-        {
-            public const string Default = Business + ".EquipmentInspectionResults";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
-        }
+
         public class EquipmentMaintenances
         {
             public const string Default = Business + ".EquipmentMaintenances";
@@ -127,13 +115,7 @@ namespace Business.Permissions
             public const string Create = Default + ".Create";
             public const string Delete = Default + ".Delete";
         }
-        public class EquipmentMaintenanceResults
-        {
-            public const string Default = Business + ".EquipmentMaintenanceResults";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
-        }
+
         public class EquipmentSpareParts
         {
             public const string Default = Business + ".EquipmentSpareParts";
@@ -141,28 +123,6 @@ namespace Business.Permissions
             public const string Create = Default + ".Create";
             public const string Delete = Default + ".Delete";
         }
-        public class EquipmentSparePartTypes
-        {
-            public const string Default = Business + ".EquipmentSparePartTypes";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
-        }
-        public class EquipmentStatus
-        {
-            public const string Default = Business + ".EquipmentStatus";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
-        }
-        public class EquipmentTypes
-        {
-            public const string Default = Business + ".EquipmentTypes";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
-        }
-
 
 
         public class BOMs
@@ -186,21 +146,7 @@ namespace Business.Permissions
             public const string Create = Default + ".Create";
             public const string Delete = Default + ".Delete";
         }
-        public class ProductTypes
-        {
-            public const string Default = Business + ".ProductTypes";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
-        }
 
-        public class Units
-        {
-            public const string Default = Business + ".Units";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
-        }
 
 
         public class QualityInspects
@@ -210,13 +156,7 @@ namespace Business.Permissions
             public const string Create = Default + ".Create";
             public const string Delete = Default + ".Delete";
         }
-        public class QualityInspectResults
-        {
-            public const string Default = Business + ".QualityInspectResults";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
-        }
+
         public class QualityInspectTypes
         {
             public const string Default = Business + ".QualityInspectTypes";
@@ -239,13 +179,7 @@ namespace Business.Permissions
             public const string Create = Default + ".Create";
             public const string Delete = Default + ".Delete";
         }
-        public class SupplierLevels
-        {
-            public const string Default = Business + ".SupplierLevels";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
-        }
+
 
         public class Warehouses
         {
@@ -295,13 +229,7 @@ namespace Business.Permissions
             public const string Delete = Default + ".Delete";
         }
 
-        public class OrderStatus
-        {
-            public const string Default = Business + ".OrderStatus";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
-        }
+
 
 
     }

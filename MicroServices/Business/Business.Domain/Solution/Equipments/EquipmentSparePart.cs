@@ -1,3 +1,4 @@
+using Business.BaseData;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,11 +18,11 @@ namespace Business.Equipments
         /// </summary>
         public Guid EquipmentSparePartTypeId { get; set; }
 
-        /// <summary>
-        /// 设备备件类别
-        /// </summary>
-        [ForeignKey(nameof(EquipmentSparePartTypeId))]
-        public virtual EquipmentSparePartType EquipmentSparePartType { get; set; }
+        ///// <summary>
+        ///// 设备备件类别
+        ///// </summary>
+        //[ForeignKey(nameof(EquipmentSparePartTypeId))]
+        //public virtual DataDictionaryDetail EquipmentSparePartType { get; set; }
 
         /// <summary>
         /// 设备备件名称
@@ -44,7 +45,7 @@ namespace Business.Equipments
             Guid equipmentSparePartTypeId,
             string name,
             string remark
-        ) :base(id)
+        ) : base(id)
         {
             EquipmentSparePartTypeId = equipmentSparePartTypeId;
             Name = name;

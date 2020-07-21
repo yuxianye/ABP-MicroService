@@ -20,6 +20,7 @@ namespace Business.Migrations
                     DeleterId = table.Column<Guid>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(maxLength: 32, nullable: false),
+                    CustomerLevelId = table.Column<Guid>(nullable: false),
                     Address = table.Column<string>(maxLength: 256, nullable: true),
                     Contact = table.Column<string>(maxLength: 32, nullable: true),
                     Phone = table.Column<string>(maxLength: 32, nullable: true),
@@ -53,7 +54,7 @@ namespace Business.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AppEquipmentBrands",
+                name: "AppEquipment",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -63,16 +64,22 @@ namespace Business.Migrations
                     CreatorId = table.Column<Guid>(nullable: true),
                     LastModificationTime = table.Column<DateTime>(nullable: true),
                     LastModifierId = table.Column<Guid>(nullable: true),
+                    EquipmentTypeId = table.Column<Guid>(nullable: false),
+                    EquipmentBrandId = table.Column<Guid>(nullable: false),
+                    Code = table.Column<string>(maxLength: 8, nullable: false),
                     Name = table.Column<string>(maxLength: 32, nullable: false),
+                    Specification = table.Column<string>(maxLength: 64, nullable: false),
+                    ManufactureDate = table.Column<DateTime>(nullable: false),
+                    EquipmentStatusId = table.Column<Guid>(nullable: false),
                     Remark = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppEquipmentBrands", x => x.Id);
+                    table.PrimaryKey("PK_AppEquipment", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AppEquipmentInspectionResults",
+                name: "AppEquipmentSpareParts",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -83,16 +90,17 @@ namespace Business.Migrations
                     IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
                     DeleterId = table.Column<Guid>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
+                    EquipmentSparePartTypeId = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(maxLength: 32, nullable: false),
                     Remark = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppEquipmentInspectionResults", x => x.Id);
+                    table.PrimaryKey("PK_AppEquipmentSpareParts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AppEquipmentMaintenanceResults",
+                name: "AppMaterials",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -103,35 +111,19 @@ namespace Business.Migrations
                     IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
                     DeleterId = table.Column<Guid>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
+                    Code = table.Column<string>(maxLength: 8, nullable: false),
                     Name = table.Column<string>(maxLength: 32, nullable: false),
+                    Specification = table.Column<string>(maxLength: 64, nullable: true),
+                    UnitId = table.Column<Guid>(nullable: false),
                     Remark = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppEquipmentMaintenanceResults", x => x.Id);
+                    table.PrimaryKey("PK_AppMaterials", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AppEquipmentSparePartTypes",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    ExtraProperties = table.Column<string>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    Remark = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppEquipmentSparePartTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppEquipmentStatuses",
+                name: "AppProducts",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -142,92 +134,16 @@ namespace Business.Migrations
                     IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
                     DeleterId = table.Column<Guid>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
+                    Code = table.Column<string>(maxLength: 8, nullable: false),
                     Name = table.Column<string>(maxLength: 32, nullable: false),
+                    ProductTypeId = table.Column<Guid>(nullable: false),
+                    Specification = table.Column<string>(maxLength: 64, nullable: false),
+                    UnitId = table.Column<Guid>(nullable: false),
                     Remark = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppEquipmentStatuses", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppEquipmentTypes",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
-                    DeleterId = table.Column<Guid>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    Remark = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppEquipmentTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppOrderStatuses",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
-                    DeleterId = table.Column<Guid>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    Remark = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppOrderStatuses", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppProductTypes",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
-                    DeleterId = table.Column<Guid>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    Remark = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppProductTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppQualityInspectResults",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
-                    DeleterId = table.Column<Guid>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    Remark = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppQualityInspectResults", x => x.Id);
+                    table.PrimaryKey("PK_AppProducts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -273,7 +189,7 @@ namespace Business.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AppSupplierLevels",
+                name: "AppSuppliers",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -284,32 +200,19 @@ namespace Business.Migrations
                     IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
                     DeleterId = table.Column<Guid>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
+                    Code = table.Column<string>(maxLength: 8, nullable: false),
                     Name = table.Column<string>(maxLength: 32, nullable: false),
+                    SupplierLevelId = table.Column<Guid>(nullable: false),
+                    Contact = table.Column<string>(maxLength: 32, nullable: true),
+                    Phone = table.Column<string>(maxLength: 32, nullable: true),
+                    Fax = table.Column<string>(maxLength: 32, nullable: true),
+                    Address = table.Column<string>(maxLength: 256, nullable: true),
+                    Email = table.Column<string>(maxLength: 32, nullable: true),
                     Remark = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppSupplierLevels", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppUnits",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
-                    DeleterId = table.Column<Guid>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    Remark = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppUnits", x => x.Id);
+                    table.PrimaryKey("PK_AppSuppliers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -403,7 +306,7 @@ namespace Business.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AppEquipmentSpareParts",
+                name: "AppEquipmentInspections",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -414,66 +317,34 @@ namespace Business.Migrations
                     IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
                     DeleterId = table.Column<Guid>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
-                    EquipmentSparePartTypeId = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
+                    EquipmentId = table.Column<Guid>(nullable: false),
+                    InspectPerson = table.Column<string>(maxLength: 32, nullable: false),
+                    InspectionTime = table.Column<DateTime>(nullable: false),
+                    EquipmentInspectionResultId = table.Column<Guid>(nullable: false),
+                    Problem = table.Column<string>(maxLength: 256, nullable: true),
+                    Cause = table.Column<string>(maxLength: 256, nullable: true),
+                    Solution = table.Column<string>(maxLength: 256, nullable: true),
                     Remark = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppEquipmentSpareParts", x => x.Id);
+                    table.PrimaryKey("PK_AppEquipmentInspections", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AppEquipmentSpareParts_AppEquipmentSparePartTypes_EquipmentSparePartTypeId",
-                        column: x => x.EquipmentSparePartTypeId,
-                        principalTable: "AppEquipmentSparePartTypes",
+                        name: "FK_AppEquipmentInspections_AppEquipment_EquipmentId",
+                        column: x => x.EquipmentId,
+                        principalTable: "AppEquipment",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AppEquipmentInspections_base_dict_details_EquipmentInspectionResultId",
+                        column: x => x.EquipmentInspectionResultId,
+                        principalTable: "base_dict_details",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AppEquipment",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    ExtraProperties = table.Column<string>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    EquipmentTypeId = table.Column<Guid>(nullable: false),
-                    EquipmentBrandId = table.Column<Guid>(nullable: false),
-                    Code = table.Column<string>(maxLength: 8, nullable: false),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    Specification = table.Column<string>(maxLength: 64, nullable: false),
-                    ManufactureDate = table.Column<DateTime>(nullable: false),
-                    EquipmentStatusId = table.Column<Guid>(nullable: false),
-                    Remark = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppEquipment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AppEquipment_AppEquipmentBrands_EquipmentBrandId",
-                        column: x => x.EquipmentBrandId,
-                        principalTable: "AppEquipmentBrands",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AppEquipment_AppEquipmentStatuses_EquipmentStatusId",
-                        column: x => x.EquipmentStatusId,
-                        principalTable: "AppEquipmentStatuses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AppEquipment_AppEquipmentTypes_EquipmentTypeId",
-                        column: x => x.EquipmentTypeId,
-                        principalTable: "AppEquipmentTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppSuppliers",
+                name: "AppEquipmentMaintenances",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -484,29 +355,31 @@ namespace Business.Migrations
                     IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
                     DeleterId = table.Column<Guid>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
-                    Code = table.Column<string>(maxLength: 8, nullable: false),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    SupplierLevelId = table.Column<Guid>(nullable: false),
-                    Contact = table.Column<string>(maxLength: 32, nullable: true),
-                    Phone = table.Column<string>(maxLength: 32, nullable: true),
-                    Fax = table.Column<string>(maxLength: 32, nullable: true),
-                    Address = table.Column<string>(maxLength: 256, nullable: true),
-                    Email = table.Column<string>(maxLength: 32, nullable: true),
+                    EquipmentId = table.Column<Guid>(nullable: false),
+                    Problem = table.Column<string>(maxLength: 256, nullable: false),
+                    Cause = table.Column<string>(maxLength: 256, nullable: false),
+                    Solution = table.Column<string>(maxLength: 256, nullable: false),
+                    ActualStartTime = table.Column<DateTime>(nullable: false),
+                    ActualFinishTime = table.Column<DateTime>(nullable: false),
+                    Consumable = table.Column<string>(maxLength: 256, nullable: false),
+                    ResponsiblePerson = table.Column<string>(maxLength: 32, nullable: false),
+                    MaintenanceTime = table.Column<DateTime>(nullable: false),
+                    EquipmentMaintenanceResultId = table.Column<Guid>(nullable: false),
                     Remark = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppSuppliers", x => x.Id);
+                    table.PrimaryKey("PK_AppEquipmentMaintenances", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AppSuppliers_AppSupplierLevels_SupplierLevelId",
-                        column: x => x.SupplierLevelId,
-                        principalTable: "AppSupplierLevels",
+                        name: "FK_AppEquipmentMaintenances_AppEquipment_EquipmentId",
+                        column: x => x.EquipmentId,
+                        principalTable: "AppEquipment",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AppMaterials",
+                name: "AppBOMs",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -517,25 +390,27 @@ namespace Business.Migrations
                     IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
                     DeleterId = table.Column<Guid>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
-                    Code = table.Column<string>(maxLength: 8, nullable: false),
                     Name = table.Column<string>(maxLength: 32, nullable: false),
-                    Specification = table.Column<string>(maxLength: 64, nullable: true),
-                    UnitId = table.Column<Guid>(nullable: false),
+                    ProductId = table.Column<Guid>(nullable: false),
+                    Version = table.Column<string>(maxLength: 64, nullable: false),
+                    MaterialId = table.Column<Guid>(nullable: false),
+                    Count = table.Column<int>(nullable: false),
+                    IsEnabled = table.Column<bool>(nullable: false),
                     Remark = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppMaterials", x => x.Id);
+                    table.PrimaryKey("PK_AppBOMs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AppMaterials_AppUnits_UnitId",
-                        column: x => x.UnitId,
-                        principalTable: "AppUnits",
+                        name: "FK_AppBOMs_AppMaterials_MaterialId",
+                        column: x => x.MaterialId,
+                        principalTable: "AppMaterials",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AppProducts",
+                name: "AppOrders",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -546,26 +421,28 @@ namespace Business.Migrations
                     IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
                     DeleterId = table.Column<Guid>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
-                    Code = table.Column<string>(maxLength: 8, nullable: false),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    ProductTypeId = table.Column<Guid>(nullable: false),
-                    Specification = table.Column<string>(maxLength: 64, nullable: false),
-                    UnitId = table.Column<Guid>(nullable: false),
+                    Code = table.Column<int>(maxLength: 8, nullable: false),
+                    CustomerId = table.Column<Guid>(nullable: false),
+                    ProductId = table.Column<Guid>(nullable: false),
+                    Count = table.Column<int>(nullable: false),
+                    OrderStatusId = table.Column<Guid>(nullable: false),
+                    OrderDate = table.Column<DateTime>(nullable: false),
+                    DeliveryDate = table.Column<DateTime>(nullable: false),
                     Remark = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppProducts", x => x.Id);
+                    table.PrimaryKey("PK_AppOrders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AppProducts_AppProductTypes_ProductTypeId",
-                        column: x => x.ProductTypeId,
-                        principalTable: "AppProductTypes",
+                        name: "FK_AppOrders_AppCustomers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "AppCustomers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AppProducts_AppUnits_UnitId",
-                        column: x => x.UnitId,
-                        principalTable: "AppUnits",
+                        name: "FK_AppOrders_AppProducts_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "AppProducts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -641,154 +518,6 @@ namespace Business.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AppEquipmentInspections",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
-                    DeleterId = table.Column<Guid>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    EquipmentId = table.Column<Guid>(nullable: false),
-                    InspectPerson = table.Column<string>(maxLength: 32, nullable: false),
-                    InspectionTime = table.Column<DateTime>(nullable: false),
-                    EquipmentInspectionResultId = table.Column<Guid>(nullable: false),
-                    Problem = table.Column<string>(maxLength: 256, nullable: true),
-                    Cause = table.Column<string>(maxLength: 256, nullable: true),
-                    Solution = table.Column<string>(maxLength: 256, nullable: true),
-                    Remark = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppEquipmentInspections", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AppEquipmentInspections_AppEquipment_EquipmentId",
-                        column: x => x.EquipmentId,
-                        principalTable: "AppEquipment",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppEquipmentMaintenances",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
-                    DeleterId = table.Column<Guid>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    EquipmentId = table.Column<Guid>(nullable: false),
-                    Problem = table.Column<string>(maxLength: 256, nullable: false),
-                    Cause = table.Column<string>(maxLength: 256, nullable: false),
-                    Solution = table.Column<string>(maxLength: 256, nullable: false),
-                    ActualStartTime = table.Column<DateTime>(nullable: false),
-                    ActualFinishTime = table.Column<DateTime>(nullable: false),
-                    Consumable = table.Column<string>(maxLength: 256, nullable: false),
-                    ResponsiblePerson = table.Column<string>(maxLength: 32, nullable: false),
-                    MaintenanceTime = table.Column<DateTime>(nullable: false),
-                    EquipmentMaintenanceResultId = table.Column<Guid>(nullable: false),
-                    Remark = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppEquipmentMaintenances", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AppEquipmentMaintenances_AppEquipment_EquipmentId",
-                        column: x => x.EquipmentId,
-                        principalTable: "AppEquipment",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AppEquipmentMaintenances_AppEquipmentMaintenanceResults_EquipmentMaintenanceResultId",
-                        column: x => x.EquipmentMaintenanceResultId,
-                        principalTable: "AppEquipmentMaintenanceResults",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppBOMs",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
-                    DeleterId = table.Column<Guid>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    ProductId = table.Column<Guid>(nullable: false),
-                    Version = table.Column<string>(maxLength: 64, nullable: false),
-                    MaterialId = table.Column<Guid>(nullable: false),
-                    Count = table.Column<int>(nullable: false),
-                    IsEnabled = table.Column<bool>(nullable: false),
-                    Remark = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppBOMs", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AppBOMs_AppMaterials_MaterialId",
-                        column: x => x.MaterialId,
-                        principalTable: "AppMaterials",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppOrders",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
-                    DeleterId = table.Column<Guid>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    Code = table.Column<int>(maxLength: 8, nullable: false),
-                    CustomerId = table.Column<Guid>(nullable: false),
-                    ProductId = table.Column<Guid>(nullable: false),
-                    Count = table.Column<int>(nullable: false),
-                    OrderStatusId = table.Column<Guid>(nullable: false),
-                    OrderDate = table.Column<DateTime>(nullable: false),
-                    DeliveryDate = table.Column<DateTime>(nullable: false),
-                    Remark = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppOrders", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AppOrders_AppCustomers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "AppCustomers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AppOrders_AppOrderStatuses_OrderStatusId",
-                        column: x => x.OrderStatusId,
-                        principalTable: "AppOrderStatuses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AppOrders_AppProducts_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "AppProducts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AppQualityInspects",
                 columns: table => new
                 {
@@ -816,12 +545,6 @@ namespace Business.Migrations
                         name: "FK_AppQualityInspects_Process_ProcessId",
                         column: x => x.ProcessId,
                         principalTable: "Process",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AppQualityInspects_AppQualityInspectResults_QualityInspectResultId",
-                        column: x => x.QualityInspectResultId,
-                        principalTable: "AppQualityInspectResults",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -1115,35 +838,8 @@ namespace Business.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_AppEquipment_EquipmentBrandId",
-                table: "AppEquipment",
-                column: "EquipmentBrandId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppEquipment_EquipmentStatusId",
-                table: "AppEquipment",
-                column: "EquipmentStatusId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppEquipment_EquipmentTypeId",
-                table: "AppEquipment",
-                column: "EquipmentTypeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AppEquipment_Name",
                 table: "AppEquipment",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppEquipmentBrands_Name",
-                table: "AppEquipmentBrands",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppEquipmentInspectionResults_Name",
-                table: "AppEquipmentInspectionResults",
                 column: "Name",
                 unique: true);
 
@@ -1153,10 +849,9 @@ namespace Business.Migrations
                 column: "EquipmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AppEquipmentMaintenanceResults_Name",
-                table: "AppEquipmentMaintenanceResults",
-                column: "Name",
-                unique: true);
+                name: "IX_AppEquipmentInspections_EquipmentInspectionResultId",
+                table: "AppEquipmentInspections",
+                column: "EquipmentInspectionResultId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppEquipmentMaintenances_EquipmentId",
@@ -1164,36 +859,8 @@ namespace Business.Migrations
                 column: "EquipmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AppEquipmentMaintenances_EquipmentMaintenanceResultId",
-                table: "AppEquipmentMaintenances",
-                column: "EquipmentMaintenanceResultId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppEquipmentSpareParts_EquipmentSparePartTypeId",
-                table: "AppEquipmentSpareParts",
-                column: "EquipmentSparePartTypeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AppEquipmentSpareParts_Name",
                 table: "AppEquipmentSpareParts",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppEquipmentSparePartTypes_Name",
-                table: "AppEquipmentSparePartTypes",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppEquipmentStatuses_Name",
-                table: "AppEquipmentStatuses",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppEquipmentTypes_Name",
-                table: "AppEquipmentTypes",
                 column: "Name",
                 unique: true);
 
@@ -1210,11 +877,6 @@ namespace Business.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_AppMaterials_UnitId",
-                table: "AppMaterials",
-                column: "UnitId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AppOrders_Code",
                 table: "AppOrders",
                 column: "Code",
@@ -1226,20 +888,9 @@ namespace Business.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AppOrders_OrderStatusId",
-                table: "AppOrders",
-                column: "OrderStatusId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AppOrders_ProductId",
                 table: "AppOrders",
                 column: "ProductId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppOrderStatuses_Name",
-                table: "AppOrderStatuses",
-                column: "Name",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppProducts_Code",
@@ -1254,28 +905,6 @@ namespace Business.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_AppProducts_ProductTypeId",
-                table: "AppProducts",
-                column: "ProductTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppProducts_UnitId",
-                table: "AppProducts",
-                column: "UnitId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppProductTypes_Name",
-                table: "AppProductTypes",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppQualityInspectResults_Name",
-                table: "AppQualityInspectResults",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AppQualityInspects_Code",
                 table: "AppQualityInspects",
                 column: "Code",
@@ -1285,11 +914,6 @@ namespace Business.Migrations
                 name: "IX_AppQualityInspects_ProcessId",
                 table: "AppQualityInspects",
                 column: "ProcessId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppQualityInspects_QualityInspectResultId",
-                table: "AppQualityInspects",
-                column: "QualityInspectResultId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppQualityInspects_QualityInspectTypeId",
@@ -1326,12 +950,6 @@ namespace Business.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_AppSupplierLevels_Name",
-                table: "AppSupplierLevels",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AppSuppliers_Code",
                 table: "AppSuppliers",
                 column: "Code",
@@ -1340,17 +958,6 @@ namespace Business.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AppSuppliers_Name",
                 table: "AppSuppliers",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppSuppliers_SupplierLevelId",
-                table: "AppSuppliers",
-                column: "SupplierLevelId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppUnits_Name",
-                table: "AppUnits",
                 column: "Name",
                 unique: true);
 
@@ -1419,9 +1026,6 @@ namespace Business.Migrations
                 name: "AppEnterpriseWorkLocations");
 
             migrationBuilder.DropTable(
-                name: "AppEquipmentInspectionResults");
-
-            migrationBuilder.DropTable(
                 name: "AppEquipmentInspections");
 
             migrationBuilder.DropTable(
@@ -1455,16 +1059,7 @@ namespace Business.Migrations
                 name: "AppEquipment");
 
             migrationBuilder.DropTable(
-                name: "AppEquipmentMaintenanceResults");
-
-            migrationBuilder.DropTable(
-                name: "AppEquipmentSparePartTypes");
-
-            migrationBuilder.DropTable(
                 name: "AppCustomers");
-
-            migrationBuilder.DropTable(
-                name: "AppOrderStatuses");
 
             migrationBuilder.DropTable(
                 name: "AppProducts");
@@ -1473,37 +1068,16 @@ namespace Business.Migrations
                 name: "Process");
 
             migrationBuilder.DropTable(
-                name: "AppQualityInspectResults");
-
-            migrationBuilder.DropTable(
                 name: "AppQualityInspectTypes");
 
             migrationBuilder.DropTable(
                 name: "AppQualityProblemLibs");
 
             migrationBuilder.DropTable(
-                name: "AppSupplierLevels");
-
-            migrationBuilder.DropTable(
                 name: "AppWarehouseAreas");
 
             migrationBuilder.DropTable(
                 name: "AppEnterpriseProductionLines");
-
-            migrationBuilder.DropTable(
-                name: "AppEquipmentBrands");
-
-            migrationBuilder.DropTable(
-                name: "AppEquipmentStatuses");
-
-            migrationBuilder.DropTable(
-                name: "AppEquipmentTypes");
-
-            migrationBuilder.DropTable(
-                name: "AppProductTypes");
-
-            migrationBuilder.DropTable(
-                name: "AppUnits");
 
             migrationBuilder.DropTable(
                 name: "CheckType");
