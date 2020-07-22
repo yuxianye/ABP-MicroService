@@ -29,6 +29,12 @@ namespace Business.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AppCustomers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AppCustomers_base_dict_details_CustomerLevelId",
+                        column: x => x.CustomerLevelId,
+                        principalTable: "base_dict_details",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -76,6 +82,24 @@ namespace Business.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AppEquipment", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AppEquipment_base_dict_details_EquipmentBrandId",
+                        column: x => x.EquipmentBrandId,
+                        principalTable: "base_dict_details",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AppEquipment_base_dict_details_EquipmentStatusId",
+                        column: x => x.EquipmentStatusId,
+                        principalTable: "base_dict_details",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AppEquipment_base_dict_details_EquipmentTypeId",
+                        column: x => x.EquipmentTypeId,
+                        principalTable: "base_dict_details",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -97,6 +121,12 @@ namespace Business.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AppEquipmentSpareParts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AppEquipmentSpareParts_base_dict_details_EquipmentSparePartTypeId",
+                        column: x => x.EquipmentSparePartTypeId,
+                        principalTable: "base_dict_details",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -120,6 +150,12 @@ namespace Business.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AppMaterials", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AppMaterials_base_dict_details_UnitId",
+                        column: x => x.UnitId,
+                        principalTable: "base_dict_details",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -144,27 +180,18 @@ namespace Business.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AppProducts", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppQualityInspectTypes",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
-                    DeleterId = table.Column<Guid>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    Code = table.Column<string>(maxLength: 8, nullable: false),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    Remark = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppQualityInspectTypes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AppProducts_base_dict_details_ProductTypeId",
+                        column: x => x.ProductTypeId,
+                        principalTable: "base_dict_details",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AppProducts_base_dict_details_UnitId",
+                        column: x => x.UnitId,
+                        principalTable: "base_dict_details",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -213,6 +240,12 @@ namespace Business.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AppSuppliers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AppSuppliers_base_dict_details_SupplierLevelId",
+                        column: x => x.SupplierLevelId,
+                        principalTable: "base_dict_details",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -340,7 +373,7 @@ namespace Business.Migrations
                         column: x => x.EquipmentInspectionResultId,
                         principalTable: "base_dict_details",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -376,6 +409,12 @@ namespace Business.Migrations
                         principalTable: "AppEquipment",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AppEquipmentMaintenances_base_dict_details_EquipmentMaintenanceResultId",
+                        column: x => x.EquipmentMaintenanceResultId,
+                        principalTable: "base_dict_details",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -405,6 +444,12 @@ namespace Business.Migrations
                         name: "FK_AppBOMs_AppMaterials_MaterialId",
                         column: x => x.MaterialId,
                         principalTable: "AppMaterials",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AppBOMs_AppProducts_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "AppProducts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -439,6 +484,12 @@ namespace Business.Migrations
                         principalTable: "AppCustomers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AppOrders_base_dict_details_OrderStatusId",
+                        column: x => x.OrderStatusId,
+                        principalTable: "base_dict_details",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AppOrders_AppProducts_ProductId",
                         column: x => x.ProductId,
@@ -548,11 +599,17 @@ namespace Business.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AppQualityInspects_AppQualityInspectTypes_QualityInspectTypeId",
-                        column: x => x.QualityInspectTypeId,
-                        principalTable: "AppQualityInspectTypes",
+                        name: "FK_AppQualityInspects_base_dict_details_QualityInspectResultId",
+                        column: x => x.QualityInspectResultId,
+                        principalTable: "base_dict_details",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AppQualityInspects_base_dict_details_QualityInspectTypeId",
+                        column: x => x.QualityInspectTypeId,
+                        principalTable: "base_dict_details",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AppQualityInspects_AppQualityProblemLibs_QualityProblemLibId",
                         column: x => x.QualityProblemLibId,
@@ -755,6 +812,17 @@ namespace Business.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_AppBOMs_ProductId",
+                table: "AppBOMs",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppCustomers_CustomerLevelId",
+                table: "AppCustomers",
+                column: "CustomerLevelId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AppCustomers_Name",
                 table: "AppCustomers",
                 column: "Name",
@@ -838,6 +906,24 @@ namespace Business.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_AppEquipment_EquipmentBrandId",
+                table: "AppEquipment",
+                column: "EquipmentBrandId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppEquipment_EquipmentStatusId",
+                table: "AppEquipment",
+                column: "EquipmentStatusId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppEquipment_EquipmentTypeId",
+                table: "AppEquipment",
+                column: "EquipmentTypeId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AppEquipment_Name",
                 table: "AppEquipment",
                 column: "Name",
@@ -851,12 +937,25 @@ namespace Business.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AppEquipmentInspections_EquipmentInspectionResultId",
                 table: "AppEquipmentInspections",
-                column: "EquipmentInspectionResultId");
+                column: "EquipmentInspectionResultId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppEquipmentMaintenances_EquipmentId",
                 table: "AppEquipmentMaintenances",
                 column: "EquipmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppEquipmentMaintenances_EquipmentMaintenanceResultId",
+                table: "AppEquipmentMaintenances",
+                column: "EquipmentMaintenanceResultId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppEquipmentSpareParts_EquipmentSparePartTypeId",
+                table: "AppEquipmentSpareParts",
+                column: "EquipmentSparePartTypeId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppEquipmentSpareParts_Name",
@@ -877,6 +976,12 @@ namespace Business.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_AppMaterials_UnitId",
+                table: "AppMaterials",
+                column: "UnitId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AppOrders_Code",
                 table: "AppOrders",
                 column: "Code",
@@ -886,6 +991,12 @@ namespace Business.Migrations
                 name: "IX_AppOrders_CustomerId",
                 table: "AppOrders",
                 column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppOrders_OrderStatusId",
+                table: "AppOrders",
+                column: "OrderStatusId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppOrders_ProductId",
@@ -905,6 +1016,18 @@ namespace Business.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_AppProducts_ProductTypeId",
+                table: "AppProducts",
+                column: "ProductTypeId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppProducts_UnitId",
+                table: "AppProducts",
+                column: "UnitId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AppQualityInspects_Code",
                 table: "AppQualityInspects",
                 column: "Code",
@@ -916,26 +1039,21 @@ namespace Business.Migrations
                 column: "ProcessId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AppQualityInspects_QualityInspectResultId",
+                table: "AppQualityInspects",
+                column: "QualityInspectResultId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AppQualityInspects_QualityInspectTypeId",
                 table: "AppQualityInspects",
-                column: "QualityInspectTypeId");
+                column: "QualityInspectTypeId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppQualityInspects_QualityProblemLibId",
                 table: "AppQualityInspects",
                 column: "QualityProblemLibId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppQualityInspectTypes_Code",
-                table: "AppQualityInspectTypes",
-                column: "Code",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppQualityInspectTypes_Name",
-                table: "AppQualityInspectTypes",
-                column: "Name",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppQualityProblemLibs_Code",
@@ -959,6 +1077,12 @@ namespace Business.Migrations
                 name: "IX_AppSuppliers_Name",
                 table: "AppSuppliers",
                 column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppSuppliers_SupplierLevelId",
+                table: "AppSuppliers",
+                column: "SupplierLevelId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -1066,9 +1190,6 @@ namespace Business.Migrations
 
             migrationBuilder.DropTable(
                 name: "Process");
-
-            migrationBuilder.DropTable(
-                name: "AppQualityInspectTypes");
 
             migrationBuilder.DropTable(
                 name: "AppQualityProblemLibs");

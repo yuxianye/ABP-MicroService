@@ -44,7 +44,6 @@ namespace Business.EntityFrameworkCore
         public DbSet<Product> Products { get; set; }
         public DbSet<BOM> BOMs { get; set; }
         public DbSet<QualityInspect> QualityInspects { get; set; }
-        public DbSet<QualityInspectType> QualityInspectTypes { get; set; }
         public DbSet<QualityProblemLib> QualityProblemLibs { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
         public DbSet<WarehouseArea> WarehouseAreas { get; set; }

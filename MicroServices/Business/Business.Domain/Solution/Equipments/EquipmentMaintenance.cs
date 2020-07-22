@@ -68,11 +68,11 @@ namespace Business.Equipments
         /// </summary>
         public Guid EquipmentMaintenanceResultId { get; set; }
 
-        ///// <summary>
-        ///// 维修结果
-        ///// </summary>
+        /// <summary>
+        /// 维修结果
+        /// </summary>
         //[ForeignKey(nameof(EquipmentMaintenanceResultId))]
-        //public virtual DataDictionaryDetail EquipmentMaintenanceResult { get; set; }
+        public virtual DataDictionaryDetail EquipmentMaintenanceResult { get; set; }
 
         /// <summary>
         /// 备注

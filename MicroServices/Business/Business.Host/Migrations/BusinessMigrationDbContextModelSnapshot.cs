@@ -411,6 +411,9 @@ namespace Business.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CustomerLevelId")
+                        .IsUnique();
+
                     b.HasIndex("Name")
                         .IsUnique();
 
@@ -877,6 +880,15 @@ namespace Business.Migrations
                     b.HasIndex("Code")
                         .IsUnique();
 
+                    b.HasIndex("EquipmentBrandId")
+                        .IsUnique();
+
+                    b.HasIndex("EquipmentStatusId")
+                        .IsUnique();
+
+                    b.HasIndex("EquipmentTypeId")
+                        .IsUnique();
+
                     b.HasIndex("Name")
                         .IsUnique();
 
@@ -953,7 +965,8 @@ namespace Business.Migrations
 
                     b.HasIndex("EquipmentId");
 
-                    b.HasIndex("EquipmentInspectionResultId");
+                    b.HasIndex("EquipmentInspectionResultId")
+                        .IsUnique();
 
                     b.ToTable("AppEquipmentInspections");
                 });
@@ -1042,6 +1055,9 @@ namespace Business.Migrations
 
                     b.HasIndex("EquipmentId");
 
+                    b.HasIndex("EquipmentMaintenanceResultId")
+                        .IsUnique();
+
                     b.ToTable("AppEquipmentMaintenances");
                 });
 
@@ -1094,6 +1110,9 @@ namespace Business.Migrations
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EquipmentSparePartTypeId")
+                        .IsUnique();
 
                     b.HasIndex("Name")
                         .IsUnique();
@@ -1170,6 +1189,8 @@ namespace Business.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
+                    b.HasIndex("ProductId");
+
                     b.ToTable("AppBOMs");
                 });
 
@@ -1236,6 +1257,9 @@ namespace Business.Migrations
                         .IsUnique();
 
                     b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.HasIndex("UnitId")
                         .IsUnique();
 
                     b.ToTable("AppMaterials");
@@ -1310,6 +1334,12 @@ namespace Business.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
+                    b.HasIndex("ProductTypeId")
+                        .IsUnique();
+
+                    b.HasIndex("UnitId")
+                        .IsUnique();
+
                     b.ToTable("AppProducts");
                 });
 
@@ -1381,6 +1411,9 @@ namespace Business.Migrations
                         .IsUnique();
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("OrderStatusId")
+                        .IsUnique();
 
                     b.HasIndex("ProductId");
 
@@ -1604,72 +1637,15 @@ namespace Business.Migrations
 
                     b.HasIndex("ProcessId");
 
-                    b.HasIndex("QualityInspectTypeId");
+                    b.HasIndex("QualityInspectResultId")
+                        .IsUnique();
+
+                    b.HasIndex("QualityInspectTypeId")
+                        .IsUnique();
 
                     b.HasIndex("QualityProblemLibId");
 
                     b.ToTable("AppQualityInspects");
-                });
-
-            modelBuilder.Entity("Business.Qualities.QualityInspectType", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(8)")
-                        .HasMaxLength(8);
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnName("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnName("CreatorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnName("DeleterId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnName("DeletionTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnName("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnName("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
-
-                    b.Property<string>("Remark")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("AppQualityInspectTypes");
                 });
 
             modelBuilder.Entity("Business.Qualities.QualityProblemLib", b =>
@@ -1812,6 +1788,9 @@ namespace Business.Migrations
                         .IsUnique();
 
                     b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.HasIndex("SupplierLevelId")
                         .IsUnique();
 
                     b.ToTable("AppSuppliers");
@@ -2060,6 +2039,15 @@ namespace Business.Migrations
                     b.ToTable("AppWarehouseTypes");
                 });
 
+            modelBuilder.Entity("Business.Customers.Customer", b =>
+                {
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "CustomerLeve")
+                        .WithOne()
+                        .HasForeignKey("Business.Customers.Customer", "CustomerLevelId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Business.Enterprises.EnterpriseArea", b =>
                 {
                     b.HasOne("Business.Enterprises.EnterpriseSite", "EnterpriseSite")
@@ -2117,6 +2105,27 @@ namespace Business.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Business.Equipments.Equipment", b =>
+                {
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "EquipmentBrand")
+                        .WithOne()
+                        .HasForeignKey("Business.Equipments.Equipment", "EquipmentBrandId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "EquipmentStatus")
+                        .WithOne()
+                        .HasForeignKey("Business.Equipments.Equipment", "EquipmentStatusId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "EquipmentType")
+                        .WithOne()
+                        .HasForeignKey("Business.Equipments.Equipment", "EquipmentTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Business.Equipments.EquipmentInspection", b =>
                 {
                     b.HasOne("Business.Equipments.Equipment", "Equipment")
@@ -2125,10 +2134,10 @@ namespace Business.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Business.BaseData.DataDictionaryDetail", "EquipmentInspectionResul")
-                        .WithMany()
-                        .HasForeignKey("EquipmentInspectionResultId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "EquipmentInspectionResult")
+                        .WithOne()
+                        .HasForeignKey("Business.Equipments.EquipmentInspection", "EquipmentInspectionResultId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -2139,6 +2148,21 @@ namespace Business.Migrations
                         .HasForeignKey("EquipmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "EquipmentMaintenanceResult")
+                        .WithOne()
+                        .HasForeignKey("Business.Equipments.EquipmentMaintenance", "EquipmentMaintenanceResultId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Business.Equipments.EquipmentSparePart", b =>
+                {
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "EquipmentSparePartType")
+                        .WithOne()
+                        .HasForeignKey("Business.Equipments.EquipmentSparePart", "EquipmentSparePartTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Business.Materials.BOM", b =>
@@ -2148,6 +2172,36 @@ namespace Business.Migrations
                         .HasForeignKey("MaterialId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Business.Materials.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Business.Materials.Material", b =>
+                {
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "Unit")
+                        .WithOne()
+                        .HasForeignKey("Business.Materials.Material", "UnitId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Business.Materials.Product", b =>
+                {
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "ProductType")
+                        .WithOne()
+                        .HasForeignKey("Business.Materials.Product", "ProductTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "Unit")
+                        .WithOne()
+                        .HasForeignKey("Business.Materials.Product", "UnitId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Business.Orders.Order", b =>
@@ -2156,6 +2210,12 @@ namespace Business.Migrations
                         .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "OrderStatus")
+                        .WithOne()
+                        .HasForeignKey("Business.Orders.Order", "OrderStatusId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Business.Materials.Product", "Product")
@@ -2188,16 +2248,31 @@ namespace Business.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Business.Qualities.QualityInspectType", "QualityInspectType")
-                        .WithMany()
-                        .HasForeignKey("QualityInspectTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "QualityInspectResult")
+                        .WithOne()
+                        .HasForeignKey("Business.Qualities.QualityInspect", "QualityInspectResultId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "QualityInspectType")
+                        .WithOne()
+                        .HasForeignKey("Business.Qualities.QualityInspect", "QualityInspectTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Business.Qualities.QualityProblemLib", "QualityProblemLib")
                         .WithMany()
                         .HasForeignKey("QualityProblemLibId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Business.Suppliers.Suppliers", b =>
+                {
+                    b.HasOne("Business.BaseData.DataDictionaryDetail", "SupplierLevel")
+                        .WithOne()
+                        .HasForeignKey("Business.Suppliers.Suppliers", "SupplierLevelId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 

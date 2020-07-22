@@ -27,11 +27,11 @@ namespace Business.Materials
         /// </summary>
         public Guid ProductTypeId { get; set; }
 
-        ///// <summary>
-        ///// 产品类型
-        ///// </summary>
+        /// <summary>
+        /// 产品类型
+        /// </summary>
         //[ForeignKey(nameof(ProductTypeId))]
-        //public virtual DataDictionaryDetail ProductType { get; set; }
+        public virtual DataDictionaryDetail ProductType { get; set; }
 
         /// <summary>
         /// 规格型号
@@ -43,11 +43,11 @@ namespace Business.Materials
         /// </summary>
         public Guid UnitId { get; set; }
 
-        ///// <summary>
-        ///// 单位
-        ///// </summary>
+        /// <summary>
+        /// 单位
+        /// </summary>
         //[ForeignKey(nameof(UnitId))]
-        //public virtual DataDictionaryDetail Unit { get; set; }
+        public virtual DataDictionaryDetail Unit { get; set; }
 
         /// <summary>
         /// 备注

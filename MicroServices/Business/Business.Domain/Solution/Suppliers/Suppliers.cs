@@ -28,11 +28,11 @@ namespace Business.Suppliers
         /// </summary>
         public Guid SupplierLevelId { get; set; }
 
-        ///// <summary>
-        ///// 供应商等级编号
-        ///// </summary>
+        /// <summary>
+        /// 供应商等级编号
+        /// </summary>
         //[ForeignKey(nameof(SupplierLevelId))]
-        //public virtual DataDictionaryDetail SupplierLevel { get; set; }
+        public virtual DataDictionaryDetail SupplierLevel { get; set; }
 
         /// <summary>
         /// 联系人

@@ -54,11 +54,11 @@ namespace Business.Orders
         /// </summary>
         public Guid OrderStatusId { get; set; }
 
-        ///// <summary>
-        ///// 订单状态
-        ///// </summary>
+        /// <summary>
+        /// 订单状态
+        /// </summary>
         //[ForeignKey(nameof(OrderStatusId))]
-        //public virtual DataDictionaryDetail OrderStatus { get; set; }
+        public virtual DataDictionaryDetail OrderStatus { get; set; }
 
         /// <summary>
         /// 订货货日期

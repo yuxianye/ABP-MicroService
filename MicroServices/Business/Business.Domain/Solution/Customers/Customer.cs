@@ -23,11 +23,11 @@ namespace Business.Customers
         /// </summary>
         public Guid CustomerLevelId { get; set; }
 
-        ///// <summary>
-        ///// 客户等级编号
-        ///// </summary>
+        /// <summary>
+        /// 客户等级编号
+        /// </summary>
         //[ForeignKey(nameof(CustomerLevelId))]
-        //public virtual DataDictionaryDetail CustomerLeve { get; set; }
+        public virtual DataDictionaryDetail CustomerLeve { get; set; }
 
         /// <summary>
         /// 地址

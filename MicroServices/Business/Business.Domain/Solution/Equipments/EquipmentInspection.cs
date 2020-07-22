@@ -41,8 +41,8 @@ namespace Business.Equipments
         /// <summary>
         /// 巡检结果
         /// </summary>
-        [ForeignKey(nameof(EquipmentInspectionResultId))]
-        public virtual DataDictionaryDetail EquipmentInspectionResul { get; set; }
+        //[ForeignKey(nameof(EquipmentInspectionResultId))]
+        public virtual DataDictionaryDetail EquipmentInspectionResult { get; set; }
 
         /// <summary>
         /// 设备存在问题

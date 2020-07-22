@@ -22,11 +22,11 @@ namespace Business.Materials
         /// </summary>
         public Guid ProductId { get; set; }
 
-        ///// <summary>
-        ///// 产品编号
-        ///// </summary>
-        //[ForeignKey(nameof(ProductId))]
-        //public virtual Product Product { get; set; }
+        /// <summary>
+        /// 产品编号
+        /// </summary>
+        [ForeignKey(nameof(ProductId))]
+        public virtual Product Product { get; set; }
 
         /// <summary>
         /// BOM版本
@@ -62,7 +62,7 @@ namespace Business.Materials
 
         public override object[] GetKeys()
         {
-            return new Object[] { ProductId, MaterialId,Version };
+            return new Object[] { ProductId, MaterialId, Version };
         }
 
 

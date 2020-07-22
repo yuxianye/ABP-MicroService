@@ -354,6 +354,32 @@ namespace Business
 
             }
 
+            //质量检查类型字典
+            if (!await _dataDictionaryRepository.AnyAsync(a => a.Name == "质量检查类型"))
+            {
+                var dataDictionary = await _dataDictionaryRepository.InsertAsync(new BaseData.DataDictionary(_guidGenerator.Create(), "质量检查类型", null));
+
+                if (!await _dataDictionaryDetailRepository.AnyAsync(a => a.Label == "抽检"))
+                {
+                    await _dataDictionaryDetailRepository.InsertAsync(new BaseData.DataDictionaryDetail(_guidGenerator.Create(), dataDictionary.Id, "抽检", "抽检", 1));
+                }
+                if (!await _dataDictionaryDetailRepository.AnyAsync(a => a.Label == "巡检"))
+                {
+                    await _dataDictionaryDetailRepository.InsertAsync(new BaseData.DataDictionaryDetail(_guidGenerator.Create(), dataDictionary.Id, "巡检", "巡检", 2));
+                }
+                if (!await _dataDictionaryDetailRepository.AnyAsync(a => a.Label == "点检"))
+                {
+                    await _dataDictionaryDetailRepository.InsertAsync(new BaseData.DataDictionaryDetail(_guidGenerator.Create(), dataDictionary.Id, "点检", "点检", 3));
+                }
+                if (!await _dataDictionaryDetailRepository.AnyAsync(a => a.Label == "首检"))
+                {
+                    await _dataDictionaryDetailRepository.InsertAsync(new BaseData.DataDictionaryDetail(_guidGenerator.Create(), dataDictionary.Id, "首检", "首检", 4));
+                }
+                if (!await _dataDictionaryDetailRepository.AnyAsync(a => a.Label == "末检"))
+                {
+                    await _dataDictionaryDetailRepository.InsertAsync(new BaseData.DataDictionaryDetail(_guidGenerator.Create(), dataDictionary.Id, "末检", "末检", 5));
+                }
+            }
             //质量检查结果字典
             if (!await _dataDictionaryRepository.AnyAsync(a => a.Name == "质量检查结果"))
             {

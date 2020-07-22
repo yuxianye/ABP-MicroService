@@ -18,11 +18,11 @@ namespace Business.Equipments
         /// </summary>
         public Guid EquipmentSparePartTypeId { get; set; }
 
-        ///// <summary>
-        ///// 设备备件类别
-        ///// </summary>
+        /// <summary>
+        /// 设备备件类别
+        /// </summary>
         //[ForeignKey(nameof(EquipmentSparePartTypeId))]
-        //public virtual DataDictionaryDetail EquipmentSparePartType { get; set; }
+        public virtual DataDictionaryDetail EquipmentSparePartType { get; set; }
 
         /// <summary>
         /// 设备备件名称

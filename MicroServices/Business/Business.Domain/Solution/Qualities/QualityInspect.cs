@@ -32,8 +32,8 @@ namespace Business.Qualities
         /// <summary>
         /// 检查类型
         /// </summary>
-        [ForeignKey(nameof(QualityInspectTypeId))]
-        public virtual QualityInspectType QualityInspectType { get; set; }
+        //[ForeignKey(nameof(QualityInspectTypeId))]
+        public virtual DataDictionaryDetail QualityInspectType { get; set; }
 
         /// <summary>
         /// 检查时间
@@ -67,11 +67,11 @@ namespace Business.Qualities
         /// </summary>
         public Guid QualityInspectResultId { get; set; }
 
-        ///// <summary>
-        ///// 质量检查结果
-        ///// </summary>
+        /// <summary>
+        /// 质量检查结果
+        /// </summary>
         //[ForeignKey(nameof(QualityInspectResultId))]
-        //public virtual DataDictionaryDetail QualityInspectResult { get; set; }
+        public virtual DataDictionaryDetail QualityInspectResult { get; set; }
 
         /// <summary>
         /// 备注

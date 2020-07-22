@@ -68,8 +68,6 @@ namespace Business
             CreateMap<CreateUpdateBOMDto, BOM>(MemberList.Source);
             CreateMap<QualityInspect, QualityInspectDto>();
             CreateMap<CreateUpdateQualityInspectDto, QualityInspect>(MemberList.Source);
-            CreateMap<QualityInspectType, QualityInspectTypeDto>();
-            CreateMap<CreateUpdateQualityInspectTypeDto, QualityInspectType>(MemberList.Source);
             CreateMap<QualityProblemLib, QualityProblemLibDto>();
             CreateMap<CreateUpdateQualityProblemLibDto, QualityProblemLib>(MemberList.Source);
             CreateMap<Warehouse, WarehouseDto>();

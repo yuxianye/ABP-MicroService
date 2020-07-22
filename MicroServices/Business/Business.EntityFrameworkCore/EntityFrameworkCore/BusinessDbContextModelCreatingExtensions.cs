@@ -179,6 +179,7 @@ namespace Business.EntityFrameworkCore
                 b.HasIndex(x => x.Name).IsUnique(true);
                 b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
+                b.HasOne(m => m.EquipmentSparePartType).WithOne().HasForeignKey<EquipmentSparePart>(m => m.EquipmentSparePartTypeId).OnDelete(DeleteBehavior.Restrict).IsRequired();
                 /* Configure more properties here */
             });
 
@@ -192,6 +193,7 @@ namespace Business.EntityFrameworkCore
                 b.Property(x => x.Consumable).IsRequired().HasMaxLength(BusinessConsts.StringLength256);
                 b.Property(x => x.ResponsiblePerson).IsRequired().HasMaxLength(BusinessConsts.NameLength);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
+                b.HasOne(m => m.EquipmentMaintenanceResult).WithOne().HasForeignKey<EquipmentMaintenance>(m => m.EquipmentMaintenanceResultId).OnDelete(DeleteBehavior.Restrict).IsRequired();
                 /* Configure more properties here */
             });
 
@@ -204,6 +206,7 @@ namespace Business.EntityFrameworkCore
                 b.Property(x => x.Cause).HasMaxLength(BusinessConsts.StringLength256);
                 b.Property(x => x.Solution).HasMaxLength(BusinessConsts.StringLength256);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
+                b.HasOne(m => m.EquipmentInspectionResult).WithOne().HasForeignKey<EquipmentInspection>(m => m.EquipmentInspectionResultId).OnDelete(DeleteBehavior.Restrict).IsRequired();
                 /* Configure more properties here */
             });
 
@@ -217,8 +220,13 @@ namespace Business.EntityFrameworkCore
                 b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
                 b.Property(x => x.Specification).IsRequired().HasMaxLength(BusinessConsts.StringLength64);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
+                b.HasOne(m => m.EquipmentType).WithOne().HasForeignKey<Equipment>(m => m.EquipmentTypeId).OnDelete(DeleteBehavior.Restrict).IsRequired();
+                b.HasOne(m => m.EquipmentBrand).WithOne().HasForeignKey<Equipment>(m => m.EquipmentBrandId).OnDelete(DeleteBehavior.Restrict).IsRequired();
+                b.HasOne(m => m.EquipmentStatus).WithOne().HasForeignKey<Equipment>(m => m.EquipmentStatusId).OnDelete(DeleteBehavior.Restrict).IsRequired();
+
                 /* Configure more properties here */
             });
+            //builder.HasOne(m => m.User).WithOne().HasForeignKey<Blog>(m => m.UserId).OnDelete(DeleteBehavior.Restrict).IsRequired();
 
 
             builder.Entity<Material>(b =>
@@ -230,6 +238,7 @@ namespace Business.EntityFrameworkCore
                 b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
                 b.Property(x => x.Specification).HasMaxLength(BusinessConsts.StringLength64);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
+                b.HasOne(m => m.Unit).WithOne().HasForeignKey<Material>(m => m.UnitId).OnDelete(DeleteBehavior.Restrict).IsRequired();
                 b.ConfigureByConvention();
                 /* Configure more properties here */
             });
@@ -244,6 +253,8 @@ namespace Business.EntityFrameworkCore
                 b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
                 b.Property(x => x.Specification).IsRequired().HasMaxLength(BusinessConsts.StringLength64);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
+                b.HasOne(m => m.Unit).WithOne().HasForeignKey<Product>(m => m.UnitId).OnDelete(DeleteBehavior.Restrict).IsRequired();
+                b.HasOne(m => m.ProductType).WithOne().HasForeignKey<Product>(m => m.ProductTypeId).OnDelete(DeleteBehavior.Restrict).IsRequired();
                 /* Configure more properties here */
             });
 
@@ -265,21 +276,12 @@ namespace Business.EntityFrameworkCore
                 b.Property(x => x.Code).IsRequired().HasMaxLength(BusinessConsts.CodeLength);
                 b.Property(x => x.InspectPerson).IsRequired().HasMaxLength(BusinessConsts.NameLength);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
+                b.HasOne(m => m.QualityInspectType).WithOne().HasForeignKey<QualityInspect>(m => m.QualityInspectTypeId).OnDelete(DeleteBehavior.Restrict).IsRequired();
+                b.HasOne(m => m.QualityInspectResult).WithOne().HasForeignKey<QualityInspect>(m => m.QualityInspectResultId).OnDelete(DeleteBehavior.Restrict).IsRequired();
                 b.ConfigureByConvention();
                 /* Configure more properties here */
             });
 
-            builder.Entity<QualityInspectType>(b =>
-            {
-                b.ToTable(BusinessConsts.DbTablePrefix + "QualityInspectTypes", BusinessConsts.DbSchema);
-                b.HasIndex(x => x.Code).IsUnique(true);
-                b.Property(x => x.Code).IsRequired().HasMaxLength(BusinessConsts.CodeLength);
-                b.HasIndex(x => x.Name).IsUnique(true);
-                b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
-                b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
-                b.ConfigureByConvention();
-                /* Configure more properties here */
-            });
 
             builder.Entity<QualityProblemLib>(b =>
             {
@@ -306,6 +308,7 @@ namespace Business.EntityFrameworkCore
                 b.Property(x => x.Address).HasMaxLength(BusinessConsts.AddressLength);
                 b.Property(x => x.Email).HasMaxLength(BusinessConsts.EmailLength);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
+                b.HasOne(m => m.SupplierLevel).WithOne().HasForeignKey<Suppliers.Suppliers>(m => m.SupplierLevelId).OnDelete(DeleteBehavior.Restrict).IsRequired();
                 b.ConfigureByConvention();
                 /* Configure more properties here */
             });
@@ -366,6 +369,7 @@ namespace Business.EntityFrameworkCore
                 b.Property(x => x.Contact).HasMaxLength(BusinessConsts.NameLength);
                 b.Property(x => x.Phone).HasMaxLength(BusinessConsts.PhoneLength);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
+                b.HasOne(m => m.CustomerLeve).WithOne().HasForeignKey<Customer>(m => m.CustomerLevelId).OnDelete(DeleteBehavior.Restrict).IsRequired();
                 b.ConfigureByConvention();
                 /* Configure more properties here */
             });
@@ -376,6 +380,7 @@ namespace Business.EntityFrameworkCore
                 b.HasIndex(x => x.Code).IsUnique(true);
                 b.Property(x => x.Code).IsRequired().HasMaxLength(BusinessConsts.CodeLength);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
+                b.HasOne(m => m.OrderStatus).WithOne().HasForeignKey<Order>(m => m.OrderStatusId).OnDelete(DeleteBehavior.Restrict).IsRequired();
                 b.ConfigureByConvention();
                 /* Configure more properties here */
             });
