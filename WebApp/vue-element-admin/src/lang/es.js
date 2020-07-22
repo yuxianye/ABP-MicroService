@@ -73,6 +73,7 @@ export default {
     profile: 'Profile'
   },
   login: {
+    systemname: '智能制造执行系统',
     title: 'Formulario de acceso',
     logIn: 'Acceso',
     username: 'Usuario',

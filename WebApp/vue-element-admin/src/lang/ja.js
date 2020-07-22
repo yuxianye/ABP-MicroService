@@ -73,6 +73,7 @@ export default {
     size: '画面サイズ'
   },
   login: {
+    systemname: '智能制造执行系统',
     title: 'ユーザログイン',
     logIn: 'ログイン',
     username: 'ユーザ名',

@@ -10,6 +10,11 @@ namespace Business.Customers.Dtos
         [StringLength(BusinessConsts.NameLength)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// 客户等级编号
+        /// </summary>
+        public Guid CustomerLevelId { get; set; }
+
         [StringLength(BusinessConsts.AddressLength)]
         public string Address { get; set; }
 

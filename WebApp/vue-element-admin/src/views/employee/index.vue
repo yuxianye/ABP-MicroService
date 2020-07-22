@@ -50,14 +50,14 @@
               type="primary"
               icon="el-icon-plus"
               @click="handleCreate"
-              v-permission="['AbpIdentity.Users.Create']"
+              v-permission="['Business.Employee.Create']"
             >新增</el-button>
             <el-button
               class="filter-item"
               size="mini"
               type="success"
               icon="el-icon-edit"
-              v-permission="['AbpIdentity.Users.Update']"
+              v-permission="['Business.Employee.Update']"
               @click="handleUpdate()"
             >修改</el-button>
             <el-button
@@ -66,7 +66,7 @@
               type="danger"
               icon="el-icon-delete"
               size="mini"
-              v-permission="['AbpIdentity.Users.Delete']"
+              v-permission="['Business.Employee.Delete']"
               @click="handleDelete()"
             >删除</el-button>
           </div>
@@ -241,7 +241,7 @@
                 type="primary"
                 size="mini"
                 @click="handleUpdate(row)"
-                v-permission="['AbpIdentity.Users.Update']"
+                v-permission="['Business.Employee.Update']"
                 icon="el-icon-edit"
               />
               <el-button
@@ -249,7 +249,7 @@
                 size="mini"
                 @click="handleDelete(row)"
                 :disabled="row.userName==='admin'"
-                v-permission="['AbpIdentity.Users.Delete']"
+                v-permission="['Business.Employee.Delete']"
                 icon="el-icon-delete"
               />
             </template>

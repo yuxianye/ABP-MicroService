@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 using Business.Localization;
 using Volo.Abp;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Business.Customers
 {
-    public class CustomerAppService : CrudAppService<Customer, CustomerDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateCustomerDto, CreateUpdateCustomerDto>,
-        ICustomerAppService
+    public class CustomerAppService : CrudAppService<Customer, CustomerDto, Guid, CustomerPagedAndSortedResultRequestDto, CreateUpdateCustomerDto, CreateUpdateCustomerDto>,
+    ICustomerAppService
     {
         protected override string GetPolicyName { get; set; } = BusinessPermissions.Customers.Default;
         protected override string GetListPolicyName { get; set; } = BusinessPermissions.Customers.Default;
@@ -25,12 +29,37 @@ namespace Business.Customers
             LocalizationResource = typeof(BusinessResource);
         }
 
-
-
-        public override Task<PagedResultDto<CustomerDto>> GetListAsync(PagedAndSortedResultRequestDto input)
+        protected override IQueryable<Customer> CreateFilteredQuery(CustomerPagedAndSortedResultRequestDto input)
         {
-            return base.GetListAsync(input);
+            var query = base.CreateFilteredQuery(input);
+            query = query.WhereIf(!string.IsNullOrWhiteSpace(input.Filter), _ => _.Name.Contains(input.Filter) || _.Phone.Contains(input.Filter));
+            query = query.Include(a => a.CustomerLeve);
+            return query;
         }
+
+        //public override async Task<PagedResultDto<CustomerDto>> GetListAsync(CustomerPagedAndSortedResultRequestDto input)
+        //{
+
+        //    await CheckGetListPolicyAsync();
+
+        //    var query = CreateFilteredQuery(input);
+
+        //    var totalCount = await AsyncQueryableExecuter.CountAsync(query);
+
+        //    query = ApplySorting(query, input);
+        //    query = ApplyPaging(query, input);
+
+        //    var entities = await AsyncQueryableExecuter.ToListAsync(query);
+
+        //    return new PagedResultDto<CustomerDto>(
+        //        totalCount,
+        //        entities.Select(MapToGetListOutputDto).ToList()
+        //    );
+        //    //return base.GetListAsync(input);
+        //}
+
+
+
 
         public override async Task<CustomerDto> CreateAsync(CreateUpdateCustomerDto input)
         {
@@ -73,8 +102,15 @@ namespace Business.Customers
         }
 
 
-
-
+        [Authorize(BusinessPermissions.Customers.Delete)]
+        public async Task Delete(List<Guid> ids)
+        {
+            foreach (var id in ids)
+            {
+                await Repository.DeleteAsync(id);
+            }
+        }
 
     }
+
 }

@@ -80,7 +80,8 @@ namespace Business
             CreateMap<CreateUpdateWarehouseTypeDto, WarehouseType>(MemberList.Source);
             CreateMap<Suppliers.Suppliers, SuppliersDto>();
             CreateMap<CreateUpdateSuppliersDto, Suppliers.Suppliers>(MemberList.Source);
-            CreateMap<Customer, CustomerDto>();
+            CreateMap<Customer, CustomerDto>()
+                .ForMember(a => a.CustomerLevelName, b => b.MapFrom(c => c.CustomerLeve.Label));
             CreateMap<CreateUpdateCustomerDto, Customer>(MemberList.Source);
             CreateMap<Order, OrderDto>();
             CreateMap<CreateUpdateOrderDto, Order>(MemberList.Source);

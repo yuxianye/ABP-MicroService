@@ -172,7 +172,17 @@ export const asyncRoutes = [
         roles: ['Business.Employee'],
         icon: 'employee'
       }
-    }
+    },
+    {
+      path: 'customer',
+      component: () => import('@/views/customer/index'),
+      name: 'customer',
+      meta:{
+        title: 'customer',
+        roles: ['Business.Customers'],
+        icon: 'customers'
+      }
+    },
   ]},
 
   /** when your routing map is too long, you can split it into small modules **/

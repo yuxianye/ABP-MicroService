@@ -55,9 +55,10 @@ namespace Business.Customers
         {
         }
 
-        public Customer(Guid id, string name, string address, string contact, string phone, string remark) : base(id)
+        public Customer(Guid id, string name, Guid customerLevelId, string address, string contact, string phone, string remark) : base(id)
         {
             Name = name;
+            CustomerLevelId = customerLevelId;
             Address = address;
             Contact = contact;
             Phone = phone;
