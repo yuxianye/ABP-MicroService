@@ -10,5 +10,8 @@ namespace Business.BaseData.DataDictionaryManagement.Dto
     {
         [Required]
         public Guid Pid { get; set; }
+
+        public string Filter { get; set; }
+
     }
 }

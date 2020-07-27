@@ -75,7 +75,8 @@ namespace Business.BaseData.DataDictionaryManagement
         public async Task<PagedResultDto<DictionaryDetailDto>> GetAll(GetDictionaryDetailInputDto input)
         {
             var query = _detailRepository.Where(_ => _.Pid == input.Pid);
-            var items = await query.OrderBy(_=>_.Sort)
+            query = query.WhereIf(!string.IsNullOrWhiteSpace(input.Filter), _ => _.Pid == input.Pid && (_.Label.Contains(input.Filter) || _.Value.Contains(input.Filter)));
+            var items = await query.OrderBy(_ => _.Sort)
                      .Skip(input.SkipCount)
                      .Take(input.MaxResultCount)
                      .ToListAsync();
