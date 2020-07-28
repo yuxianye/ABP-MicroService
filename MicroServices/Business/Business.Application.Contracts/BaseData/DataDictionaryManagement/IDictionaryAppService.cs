@@ -14,6 +14,11 @@ namespace Business.BaseData.DataDictionaryManagement
 
         Task<DictionaryDto> Get(Guid id);
 
+        //Task<DictionaryDto> GetByName(GetDicDto getDicDto);
+
+        Task<DictionaryDto> Get(string name);
+
+
         Task<DictionaryDto> Create(CreateOrUpdateDictionaryDto input);
 
         Task<DictionaryDto> Update(Guid id, CreateOrUpdateDictionaryDto input);

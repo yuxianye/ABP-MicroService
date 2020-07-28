@@ -6,7 +6,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace Business.BaseData.DataDictionaryManagement.Dto
 {
-    public class GetDictionaryDetailInputDto: PagedAndSortedResultRequestDto
+    public class GetDictionaryDetailInputDto : PagedAndSortedResultRequestDto
     {
         [Required]
         public Guid Pid { get; set; }
@@ -14,4 +14,12 @@ namespace Business.BaseData.DataDictionaryManagement.Dto
         public string Filter { get; set; }
 
     }
+
+    //public class GetDicDto
+    //{
+    //    public string Name { get; set; }
+    //}
+
+
+
 }

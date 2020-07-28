@@ -58,6 +58,18 @@ namespace Business.BaseData.DataDictionaryManagement
             return ObjectMapper.Map<DataDictionary, DictionaryDto>(result);
         }
 
+        public async Task<DictionaryDto> Get(string name)
+        {
+            var result = await _repository.GetAsync(a => a.Name == name);
+            return ObjectMapper.Map<DataDictionary, DictionaryDto>(result);
+        }
+
+        //public async Task<DictionaryDto> GetByName(GetDicDto getDicDto)
+        //{
+        //    var result = await _repository.GetAsync(a => a.Name == getDicDto.Name);
+        //    return ObjectMapper.Map<DataDictionary, DictionaryDto>(result);
+        //}
+
         public async Task<PagedResultDto<DictionaryDto>> GetAll(GetDictionaryInputDto input)
         {
             var query = _repository

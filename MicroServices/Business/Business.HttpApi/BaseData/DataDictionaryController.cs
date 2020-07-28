@@ -4,6 +4,7 @@ using Business.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 
@@ -39,6 +40,22 @@ namespace Business.BaseData
         {
             return _dictionaryAppService.Get(id);
         }
+
+
+
+        [HttpGet]
+        [Route("{name}")]
+        public Task<DictionaryDto> Get(string name)
+        {
+            return _dictionaryAppService.Get(name);
+        }
+
+        //[HttpGet]
+        //[Route("{name}")]
+        //public Task<DictionaryDto> GetByName(GetDicDto getDicDto)
+        //{
+        //    return _dictionaryAppService.GetByName(getDicDto);
+        //}
 
         [HttpGet]
         [Route("all")]

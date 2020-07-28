@@ -5,9 +5,9 @@
         <el-input v-model="listQuery.Filter" clearable size="small" placeholder="搜索..." style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
         <el-button class="filter-item" size="mini" type="success" icon="el-icon-search" @click="handleFilter">搜索</el-button>
         <div style="padding: 6px 0;">
-            <el-button class="filter-item" size="mini" type="primary" icon="el-icon-plus" @click="handleCreate" v-permission="['AbpIdentity.Users.Create']">新增</el-button>
-            <el-button class="filter-item" size="mini" type="success" icon="el-icon-edit" v-permission="['AbpIdentity.Users.Update']" @click="handleUpdate()">修改</el-button>
-            <el-button slot="reference" class="filter-item" type="danger" icon="el-icon-delete" size="mini" v-permission="['AbpIdentity.Users.Delete']" @click="handleDelete()">删除</el-button>
+            <el-button class="filter-item" size="mini" type="primary" icon="el-icon-plus" @click="handleCreate" v-permission="['Business.Employee.Create']">新增</el-button>
+            <el-button class="filter-item" size="mini" type="success" icon="el-icon-edit" v-permission="['Business.Employee.Update']" @click="handleUpdate()">修改</el-button>
+            <el-button slot="reference" class="filter-item" type="danger" icon="el-icon-delete" size="mini" v-permission="['Business.Employee.Delete']" @click="handleDelete()">删除</el-button>
         </div>
     </div>
     <el-dialog :visible.sync="dialogFormVisible" :close-on-click-modal="false" :title="formTitle" @close="cancel()" width="500px">
@@ -94,8 +94,8 @@
 
         <el-table-column label="操作" align="center">
             <template slot-scope="{row}">
-                <el-button type="primary" size="mini" @click="handleUpdate(row)" v-permission="['Business.Customers.Update']" icon="el-icon-edit" />
-                <el-button type="danger" size="mini" @click="handleDelete(row)" :disabled="row.userName==='admin'" v-permission="['Business.Customers.Delete']" icon="el-icon-delete" />
+                <el-button type="primary" size="mini" @click="handleUpdate(row)" v-permission="['Business.Employee.Update']" icon="el-icon-edit" />
+                <el-button type="danger" size="mini" @click="handleDelete(row)" :disabled="row.userName==='admin'" v-permission="['Business.Employee.Delete']" icon="el-icon-delete" />
             </template>
         </el-table-column>
     </el-table>
@@ -105,6 +105,9 @@
 </template>
 
 <script>
+import {
+    isvalidPhone
+} from "@/utils/validate";
 import Pagination from '@/components/Pagination'
 import permission from '@/directive/permission/index.js'
 
@@ -130,20 +133,17 @@ export default {
         permission
     },
 
-    
     data() {
-    // 自定义验证
-    const validPhone = (rule, value, callback) => {
-      if (!value) {
-        callback(new Error("请输入电话号码"));
-      } else if (!isvalidPhone(value)) {
-        callback(new Error("请输入正确的11位手机号码"));
-      } else {
-        callback();
-      }
-    };
-
-
+        // 自定义验证
+        const validPhone = (rule, value, callback) => {
+            if (!value) {
+                callback(new Error("请输入电话号码"));
+            } else if (!isvalidPhone(value)) {
+                callback(new Error("请输入正确的11位手机号码"));
+            } else {
+                callback();
+            }
+        };
 
         return {
             rules: {
@@ -152,8 +152,11 @@ export default {
                     message: "请输入客户姓名",
                     trigger: "blur"
                 }],
-                phone: [{ required: true, trigger: "blur", validator: validPhone }
-        ]
+                phone: [{
+                    required: true,
+                    trigger: "blur",
+                    validator: validPhone
+                }]
 
             },
 
@@ -175,7 +178,7 @@ export default {
 
             customerLevelListQuery: {
 
-                Pid: "0F7477F1-E696-6A7D-3351-39F6A565AC0A",
+                Pid: "C92BA6C8-1489-B294-EEB6-39F6A6F03659",
                 Filter: '',
                 Sorting: '',
                 SkipCount: 0,
@@ -207,6 +210,9 @@ export default {
         fetchData(id) {
             this.$axios.gets('/api/business/customer/' + id).then(response => {
                 this.form = response
+                if (response.customerLevelId) {
+                    this.getCustomerLevel(response.customerLevelId);
+                }
             })
         },
 
@@ -221,8 +227,9 @@ export default {
         },
         getCustomerLevel(id) {
             this.$axios.gets("/api/business/dictDetails/" + id).then(response => {
-                this.form.customerLevelName = response.Lable;
+                this.form.customerLevelName = response.value;
             });
+
         },
         customerLevelHandleFilter() {
             this.page = 1;
@@ -270,7 +277,7 @@ export default {
                     } else {
 
                         //alert(this.form.customerLevelName);
-                        alert( this.form.customerLevelId +this.form.customerLevelName +this.form.name);
+                        //alert(this.form.customerLevelId + this.form.customerLevelName + this.form.name);
                         this.$axios
                             .posts('/api/business/customer', this.form)
                             .then(response => {
@@ -324,7 +331,7 @@ export default {
                     type: 'warning'
                 })
                 .then(() => {
-                
+
                     this.$axios
                         // .posts('/api/business/customer/delete',this.Qs.stringify( params))
                         .posts('/api/business/customer/delete', params)

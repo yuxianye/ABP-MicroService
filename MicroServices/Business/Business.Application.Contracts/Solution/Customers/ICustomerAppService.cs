@@ -20,19 +20,4 @@ namespace Business.Customers
         Task Delete(List<Guid> ids);
     }
 
-    //public interface ICustomerAppService : IApplicationService
-    //{
-    //    Task<PagedResultDto<CustomerDto>> GetAll(CustomerPagedAndSortedResultRequestDto input);
-
-    //    Task<CustomerDto> Get(Guid id);
-
-    //    Task<CustomerDto> Create(CreateUpdateCustomerDto input);
-
-    //    Task<CustomerDto> Update(Guid id, CreateUpdateCustomerDto input);
-
-    //    Task Delete(List<Guid> ids);
-    //}
-
-
-
 }

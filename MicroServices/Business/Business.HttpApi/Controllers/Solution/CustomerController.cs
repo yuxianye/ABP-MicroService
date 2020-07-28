@@ -27,13 +27,6 @@ namespace Business.Controllers
             return _customerAppService.CreateAsync(input);
         }
 
-
-
-        //public Task<CustomerDto> CreateAsync(CreateUpdateCustomerDto input)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         [HttpPost]
         [Route("Delete")]
         public Task Delete(List<Guid> ids)

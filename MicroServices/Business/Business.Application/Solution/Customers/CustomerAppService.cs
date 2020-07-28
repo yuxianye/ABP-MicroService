@@ -37,30 +37,6 @@ namespace Business.Customers
             return query;
         }
 
-        //public override async Task<PagedResultDto<CustomerDto>> GetListAsync(CustomerPagedAndSortedResultRequestDto input)
-        //{
-
-        //    await CheckGetListPolicyAsync();
-
-        //    var query = CreateFilteredQuery(input);
-
-        //    var totalCount = await AsyncQueryableExecuter.CountAsync(query);
-
-        //    query = ApplySorting(query, input);
-        //    query = ApplyPaging(query, input);
-
-        //    var entities = await AsyncQueryableExecuter.ToListAsync(query);
-
-        //    return new PagedResultDto<CustomerDto>(
-        //        totalCount,
-        //        entities.Select(MapToGetListOutputDto).ToList()
-        //    );
-        //    //return base.GetListAsync(input);
-        //}
-
-
-
-
         public override async Task<CustomerDto> CreateAsync(CreateUpdateCustomerDto input)
         {
             await CheckCreatePolicyAsync();
