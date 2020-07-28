@@ -179,8 +179,8 @@ export const asyncRoutes = [
       name: 'customer',
       meta:{
         title: 'customer',
-        // roles: ['Business.Customers'],
-        roles: ['Business.Employee'],
+        roles: ['Business.Customers'],
+        // roles: ['Business.Employee'],
         icon: 'customer'
       }
     },

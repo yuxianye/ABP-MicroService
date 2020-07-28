@@ -29,7 +29,7 @@
             </el-form-item>
 
             <el-form-item label="电话" prop="phone">
-                <el-input v-model="form.phone" style="width: 370px;" />
+                <el-input v-model="form.phone" type="phone" style="width: 370px;" />
             </el-form-item>
 
             <el-form-item label="备注">
@@ -129,14 +129,31 @@ export default {
     directives: {
         permission
     },
+
+    
     data() {
+    // 自定义验证
+    const validPhone = (rule, value, callback) => {
+      if (!value) {
+        callback(new Error("请输入电话号码"));
+      } else if (!isvalidPhone(value)) {
+        callback(new Error("请输入正确的11位手机号码"));
+      } else {
+        callback();
+      }
+    };
+
+
+
         return {
             rules: {
                 name: [{
                     required: true,
                     message: "请输入客户姓名",
                     trigger: "blur"
-                }]
+                }],
+                phone: [{ required: true, trigger: "blur", validator: validPhone }
+        ]
 
             },
 
@@ -253,8 +270,7 @@ export default {
                     } else {
 
                         //alert(this.form.customerLevelName);
-                        //alert( this.form.customerLevelId +this.form.customerLevelName +this.form.name);
-
+                        alert( this.form.customerLevelId +this.form.customerLevelName +this.form.name);
                         this.$axios
                             .posts('/api/business/customer', this.form)
                             .then(response => {

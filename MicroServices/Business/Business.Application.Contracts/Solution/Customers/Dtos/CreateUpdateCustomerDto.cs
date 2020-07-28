@@ -6,7 +6,7 @@ namespace Business.Customers.Dtos
 {
     public class CreateUpdateCustomerDto
     {
-        //[Required]
+        [Required]
         [StringLength(BusinessConsts.NameLength)]
         public string Name { get; set; }
 
@@ -21,6 +21,7 @@ namespace Business.Customers.Dtos
         [StringLength(BusinessConsts.NameLength)]
         public string Contact { get; set; }
 
+        [Required]
         [Phone]
         [StringLength(BusinessConsts.PhoneLength)]
         public string Phone { get; set; }

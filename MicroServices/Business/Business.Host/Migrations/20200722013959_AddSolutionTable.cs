@@ -23,7 +23,7 @@ namespace Business.Migrations
                     CustomerLevelId = table.Column<Guid>(nullable: false),
                     Address = table.Column<string>(maxLength: 256, nullable: true),
                     Contact = table.Column<string>(maxLength: 32, nullable: true),
-                    Phone = table.Column<string>(maxLength: 32, nullable: true),
+                    Phone = table.Column<string>(maxLength: 32, nullable: false),
                     Remark = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>

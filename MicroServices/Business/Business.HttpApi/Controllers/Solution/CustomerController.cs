@@ -12,7 +12,7 @@ namespace Business.Controllers
 {
     [Area("business")]
     [Route("api/business/customer")]
-    public class CustomerController : BusinessController
+    public class CustomerController : BusinessController, ICustomerAppService
     {
         private readonly ICustomerAppService _customerAppService;
 
@@ -22,10 +22,17 @@ namespace Business.Controllers
         }
 
         [HttpPost]
-        public Task<CustomerDto> Create(CreateUpdateCustomerDto input)
+        public Task<CustomerDto> CreateAsync(CreateUpdateCustomerDto input)
         {
             return _customerAppService.CreateAsync(input);
         }
+
+
+
+        //public Task<CustomerDto> CreateAsync(CreateUpdateCustomerDto input)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         [HttpPost]
         [Route("Delete")]
@@ -34,9 +41,16 @@ namespace Business.Controllers
             return _customerAppService.Delete(ids);
         }
 
+        [HttpPost]
+        [Route("DeleteOne")]
+        public Task DeleteAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         [HttpGet]
         [Route("{id}")]
-        public Task<CustomerDto> Get(Guid id)
+        public Task<CustomerDto> GetAsync(Guid id)
         {
             return _customerAppService.GetAsync(id);
         }
@@ -51,11 +65,28 @@ namespace Business.Controllers
             return result;
         }
 
+        //public Task<CustomerDto> GetAsync(Guid id)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        [HttpGet]
+        [Route("list")]
+        public Task<PagedResultDto<CustomerDto>> GetListAsync(CustomerPagedAndSortedResultRequestDto input)
+        {
+            throw new NotImplementedException();
+        }
+
         [HttpPut]
         [Route("{id}")]
-        public Task<CustomerDto> Update(Guid id, CreateUpdateCustomerDto input)
+        public Task<CustomerDto> UpdateAsync(Guid id, CreateUpdateCustomerDto input)
         {
             return _customerAppService.UpdateAsync(id, input);
         }
+
+        //public Task<CustomerDto> UpdateAsync(Guid id, CreateUpdateCustomerDto input)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

@@ -367,7 +367,7 @@ namespace Business.EntityFrameworkCore
                 b.Property(x => x.Name).IsRequired().HasMaxLength(BusinessConsts.NameLength);
                 b.Property(x => x.Address).HasMaxLength(BusinessConsts.AddressLength);
                 b.Property(x => x.Contact).HasMaxLength(BusinessConsts.NameLength);
-                b.Property(x => x.Phone).HasMaxLength(BusinessConsts.PhoneLength);
+                b.Property(x => x.Phone).IsRequired().HasMaxLength(BusinessConsts.PhoneLength);
                 b.Property(x => x.Remark).HasMaxLength(BusinessConsts.RemarkLength);
                 b.HasOne(m => m.CustomerLeve).WithOne().HasForeignKey<Customer>(m => m.CustomerLevelId).OnDelete(DeleteBehavior.Restrict).IsRequired();
                 b.ConfigureByConvention();

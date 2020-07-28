@@ -402,6 +402,7 @@ namespace Business.Migrations
                         .HasMaxLength(32);
 
                     b.Property<string>("Phone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(32)")
                         .HasMaxLength(32);
 
