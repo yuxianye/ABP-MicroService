@@ -108,6 +108,8 @@
 import Pagination from '@/components/Pagination'
 import permission from '@/directive/permission/index.js'
 
+import Qs from 'qs'
+
 const defaultForm = {
     id: null,
     name: null,
@@ -156,7 +158,7 @@ export default {
 
             customerLevelListQuery: {
 
-                Pid: "43ce025b-e8ca-86c5-a2f8-39f68b53aee8",
+                Pid: "0F7477F1-E696-6A7D-3351-39F6A565AC0A",
                 Filter: '',
                 Sorting: '',
                 SkipCount: 0,
@@ -285,6 +287,7 @@ export default {
             if (row) {
                 params.push(row.id)
                 alert = row.name
+
             } else {
                 if (this.multipleSelection.length === 0) {
                     this.$message({
@@ -307,6 +310,7 @@ export default {
                 .then(() => {
                 
                     this.$axios
+                        // .posts('/api/business/customer/delete',this.Qs.stringify( params))
                         .posts('/api/business/customer/delete', params)
                         .then(response => {
                             this.$notify({
