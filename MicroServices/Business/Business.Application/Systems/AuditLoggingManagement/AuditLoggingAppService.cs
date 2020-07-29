@@ -1,5 +1,7 @@
-﻿using Business.Systems.AuditLoggingManagement;
+using Business.Permissions;
+using Business.Systems.AuditLoggingManagement;
 using Business.Systems.AuditLoggingManagement.Dto;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,7 +11,8 @@ using Volo.Abp.AuditLogging;
 
 namespace XDL.Systems.AuditLoggingManagement
 {
-    public class AuditLoggingAppService: ApplicationService, IAuditLoggingAppService
+    [Authorize(BusinessPermissions.AuditLogging.Default)]
+    public class AuditLoggingAppService : ApplicationService, IAuditLoggingAppService
     {
         private readonly IAuditLogRepository _auditLogRepository;
         public AuditLoggingAppService(

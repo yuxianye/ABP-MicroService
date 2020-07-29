@@ -23,12 +23,6 @@ using Business.Orders;
 using Business.Orders.Dtos;
 using Business.Warehouses.Dtos;
 
-
-
-
-
-
-
 namespace Business
 {
     public class BusinessApplicationAutoMapperProfile : Profile

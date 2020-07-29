@@ -174,6 +174,17 @@ export const asyncRoutes = [
       }
     },
     {
+      path: 'log',
+      component: () => import('@/views/log/index'),
+      name: 'Log',
+      meta: {
+        title: 'log',
+        //TODO：改为Business.AuditLogging
+        roles: ['Business.Employee'],
+        icon: 'log'
+      }
+    },
+    {
       path: 'customer',
       component: () => import('@/views/customer/index'),
       name: 'customer',
@@ -181,7 +192,7 @@ export const asyncRoutes = [
         title: 'customer',
         // roles: ['Business.Customers'],
         roles: ['Business.Employee'],
-        icon: 'employee'
+        icon: 'peoples'
       }
     },
   ]},

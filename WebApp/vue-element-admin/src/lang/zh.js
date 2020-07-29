@@ -59,16 +59,15 @@ export default {
     pdf: 'PDF',
     exportZip: 'Export Zip',
     profile: '个人中心',
-    systemManagement:'系统管理',
-    user:'用户管理',
-    role:'角色管理',
-    dict:'数据字典',
-    org:'组织机构',
-    job:'岗位管理',
-    employee:'职员管理',
-    customer:'客户管理',
-
-
+    systemManagement: '系统管理',
+    user: '用户管理',
+    role: '角色管理',
+    dict: '数据字典',
+    org: '组织机构',
+    job: '岗位管理',
+    employee: '职员管理',
+    customer: '客户管理',
+    log: '操作日志'
   },
   navbar: {
     dashboard: '首页',
