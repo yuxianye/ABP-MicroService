@@ -181,7 +181,7 @@ export const asyncRoutes = [
         title: 'customer',
         // roles: ['Business.Customers'],
         roles: ['Business.Employee'],
-        icon: 'customer'
+        icon: 'employee'
       }
     },
   ]},

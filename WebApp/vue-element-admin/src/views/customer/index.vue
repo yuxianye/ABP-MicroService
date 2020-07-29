@@ -111,8 +111,6 @@ import {
 import Pagination from '@/components/Pagination'
 import permission from '@/directive/permission/index.js'
 
-import Qs from 'qs'
-
 const defaultForm = {
     id: null,
     name: null,
