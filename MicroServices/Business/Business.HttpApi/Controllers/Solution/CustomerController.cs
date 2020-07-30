@@ -22,9 +22,9 @@ namespace Business.Controllers
         }
 
         [HttpPost]
-        public Task<CustomerDto> CreateAsync(CreateUpdateCustomerDto input)
+        public Task<CustomerDto> Create(CreateUpdateCustomerDto input)
         {
-            return _customerAppService.CreateAsync(input);
+            return _customerAppService.Create(input);
         }
 
         [HttpPost]
@@ -43,16 +43,16 @@ namespace Business.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public Task<CustomerDto> GetAsync(Guid id)
+        public Task<CustomerDto> Get(Guid id)
         {
-            return _customerAppService.GetAsync(id);
+            return _customerAppService.Get(id);
         }
 
         [HttpGet]
         [Route("all")]
         public Task<PagedResultDto<CustomerDto>> GetAll(CustomerPagedAndSortedResultRequestDto input)
         {
-            var result = _customerAppService.GetListAsync(input);
+            var result = _customerAppService.GetAll(input);
             //var a = result.Result.Items.First().CustomerLevelName;
             //System.Diagnostics.Debug.Print($"mingcheng{a}");
             return result;
@@ -72,10 +72,14 @@ namespace Business.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public Task<CustomerDto> UpdateAsync(Guid id, CreateUpdateCustomerDto input)
+        public Task<CustomerDto> Update(Guid id, CreateUpdateCustomerDto input)
         {
-            return _customerAppService.UpdateAsync(id, input);
+            return _customerAppService.Update(id, input);
         }
+
+
+
+
 
         //public Task<CustomerDto> UpdateAsync(Guid id, CreateUpdateCustomerDto input)
         //{

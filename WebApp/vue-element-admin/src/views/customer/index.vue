@@ -5,9 +5,9 @@
         <el-input v-model="listQuery.Filter" clearable size="small" placeholder="搜索..." style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
         <el-button class="filter-item" size="mini" type="success" icon="el-icon-search" @click="handleFilter">搜索</el-button>
         <div style="padding: 6px 0;">
-            <el-button class="filter-item" size="mini" type="primary" icon="el-icon-plus" @click="handleCreate" v-permission="['Business.Employee.Create']">新增</el-button>
-            <el-button class="filter-item" size="mini" type="success" icon="el-icon-edit" v-permission="['Business.Employee.Update']" @click="handleUpdate()">修改</el-button>
-            <el-button slot="reference" class="filter-item" type="danger" icon="el-icon-delete" size="mini" v-permission="['Business.Employee.Delete']" @click="handleDelete()">删除</el-button>
+            <el-button class="filter-item" size="mini" type="primary" icon="el-icon-plus" @click="handleCreate" v-permission="['Business.Customers.Create']">新增</el-button>
+            <el-button class="filter-item" size="mini" type="success" icon="el-icon-edit" v-permission="['Business.Customers.Update']" @click="handleUpdate()">修改</el-button>
+            <el-button slot="reference" class="filter-item" type="danger" icon="el-icon-delete" size="mini" v-permission="['Business.Customers.Delete']" @click="handleDelete()">删除</el-button>
         </div>
     </div>
     <el-dialog :visible.sync="dialogFormVisible" :close-on-click-modal="false" :title="formTitle" @close="cancel()" width="500px">
@@ -94,8 +94,8 @@
 
         <el-table-column label="操作" align="center">
             <template slot-scope="{row}">
-                <el-button type="primary" size="mini" @click="handleUpdate(row)" v-permission="['Business.Employee.Update']" icon="el-icon-edit" />
-                <el-button type="danger" size="mini" @click="handleDelete(row)" :disabled="row.userName==='admin'" v-permission="['Business.Employee.Delete']" icon="el-icon-delete" />
+                <el-button type="primary" size="mini" @click="handleUpdate(row)" v-permission="['Business.Customers.Update']" icon="el-icon-edit" />
+                <el-button type="danger" size="mini" @click="handleDelete(row)" :disabled="row.userName==='admin'" v-permission="['Business.Customers.Delete']" icon="el-icon-delete" />
             </template>
         </el-table-column>
     </el-table>

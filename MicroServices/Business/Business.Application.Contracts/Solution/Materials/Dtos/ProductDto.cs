@@ -3,7 +3,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace Business.Materials.Dtos
 {
-    public class ProductDto : AuditedEntityDto<Guid>
+    public class ProductDto : EntityDto<Guid>
     {
         public string Code { get; set; }
 

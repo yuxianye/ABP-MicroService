@@ -4,7 +4,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace Business.Materials.Dtos
 {
-    public class BOMDto : AuditedEntityDto<Guid>
+    public class BOMDto : EntityDto<Guid>
     {
         public string Name { get; set; }
 

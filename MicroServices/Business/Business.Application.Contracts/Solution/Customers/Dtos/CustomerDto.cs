@@ -3,7 +3,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace Business.Customers.Dtos
 {
-    public class CustomerDto : AuditedEntityDto<Guid>
+    public class CustomerDto : EntityDto<Guid>
     {
         public string Name { get; set; }
 

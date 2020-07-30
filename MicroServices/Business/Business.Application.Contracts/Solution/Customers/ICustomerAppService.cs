@@ -7,17 +7,18 @@ using Volo.Abp.Application.Services;
 
 namespace Business.Customers
 {
-
-
-    public interface ICustomerAppService :
-      ICrudAppService<
-          CustomerDto,
-          Guid,
-          CustomerPagedAndSortedResultRequestDto,
-          CreateUpdateCustomerDto,
-          CreateUpdateCustomerDto>
+    public interface ICustomerAppService : IApplicationService
     {
+        Task<PagedResultDto<CustomerDto>> GetAll(CustomerPagedAndSortedResultRequestDto input);
+
+        Task<CustomerDto> Get(Guid id);
+
+        Task<CustomerDto> Create(CreateUpdateCustomerDto input);
+
+        Task<CustomerDto> Update(Guid id, CreateUpdateCustomerDto input);
+
         Task Delete(List<Guid> ids);
+
     }
 
 }
